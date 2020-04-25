@@ -9,50 +9,28 @@ using namespace std;
 
 class Solution {
 public:
-    bool makesquare(vector<int> &nums)
+    vector<vector<int>> subsets(vector<int> &nums)
     {
-        if (nums.size() < 4) {
-            return false;
-        }
-        int sum = 0;
-        for (int i = 0; i < nums.size(); i++) {
-            sum += nums[i];
-        }
-        if (sum % 4 != 0) {
-            return false;
-        }
-        int target = sum / 4;
-
-        int visit[4] = { 0 };
-
-        sort(nums.begin(), nums.end(), greater<int>());
-
-        return Dfs(nums, visit, 0, target);
+        vector<vector<int>> ret;
+        vector<int> visit;
+        ret.push_back(visit);
+        Dfs(nums, visit, 0, ret);
+        return ret;
     }
 
-    bool Dfs(vector<int> &nums, int visit[], int i, int target)
+    void Dfs(vector<int> &nums, vector<int> &visit, int i, vector<vector<int>> &ret)
     {
-        if (visit[0] == target && visit[1] == target && visit[2] == target && visit[3] == target) {
-            return true;
+        if (i >= nums.size()) {
+            return;
         }
 
-        for (int j = 0; j < 4; j++) {
-            if (nums[i] + visit[j] > target) {
-                continue;
-            }
-            visit[j] += nums[i];
-            if (Dfs(nums, visit, i + 1, target)) return true;
-            visit[j] -= nums[i];
-        }
-        return false;
+        visit.push_back(nums[i]);
+        ret.push_back(visit);
+        Dfs(nums, visit, i + 1, ret);
+        visit.pop_back();
+        Dfs(nums, visit, i + 1, ret);
     }
 };
-
-int main() {
-    vector<int> nums = {1, 1, 2, 2, 2};
-    Solution s;
-    cout << s.makesquare(nums) << endl;
-}
 
 
 
