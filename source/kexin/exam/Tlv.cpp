@@ -1,0 +1,82 @@
+//
+// Created by zhaohailong on 2020/4/30.
+//
+
+/*
+TLV（Tag-Length-Value），是一种简单实用的数据传输方案。其数据包一般包括三个域，分别为：标签域（Tag），长度域（Length），内容域（Value）。
+TLV码流格式: 00 01 00 00 00 01 6f，其中：码流中前 2 字节00 01为 T，紧接着 4 字节00 00 00 01为 L，后续的6f为 V，字节均为十六进制。
+字节序为大端（网络序）
+现给定一个 TLV 的的数据码流，请按要求进行解码输出。
+输入：输入为单行十六进制码流，如00 01 00 00 00 01 6f：
+输出：
+解码要求：解码后输出成单行字符串，格式为:
+{T:<tag>,L:<streamLen>,V:<m_value>}
+其中
+<tag> 为解析后的标签或类型 T，十进制；
+<streamLen> 为解析后的长度 L，十进制；
+<m_value>为解析后的内容；若内容为英文字母，则：小写变成大写输出，大写变成小写输出；其它字符保持原样输出。
+长度 L 可能与实际 V 长度不符，需要校验，长度小于L的，反馈Invalid ；长度大于L的内容做截断处理。
+ */
+
+#include <string>
+#include <iostream>
+
+using namespace std;
+
+#pragma pack(1) // 1.对齐，结构体对齐：https://www.cnblogs.com/flyinggod/p/8343478.html
+
+typedef struct {
+    uint16_t m_tag;
+    uint32_t m_valueLen;
+    uint8_t m_value[];
+} TLV;
+
+#pragma pack()
+
+class Solution {
+public:
+    void ParseTlv(const uint8_t *stream, const uint32_t streamLen)
+    {
+        TLV *tlv = (TLV *) stream;
+        uint16_t tag = Ntohs(tlv->m_tag);
+        uint32_t m_valueLen = Ntohl(tlv->m_valueLen);
+        if (streamLen - 6 < m_valueLen) {
+            printf("{T:%u,L:%u,V:Invalid", tag, m_valueLen);
+            return;
+        }
+        printf("{T:%u,L:%u,V:", tag, m_valueLen);
+        for (int i = 0; i < m_valueLen; i++) {  // 'A'：65 'a'：97
+            if (tlv->m_value[i] >= 'a' && tlv->m_value[i] <= 'z') {
+                tlv->m_value[i] = tlv->m_value[i] - ('a' - 'A');    // 小写转大写
+            } else if (tlv->m_value[i] >= 'A' && tlv->m_value[i] <= 'Z') {
+                tlv->m_value[i] = tlv->m_value[i] + ('a' - 'A');
+            }
+            printf("%c}\n", tlv->m_value[i]);
+        }
+    }
+
+    // 2.字节序（大小端）理解:https://blog.csdn.net/sunflower_della/article/details/90439935
+    // 将一个 uint16_t 从网络字节序转换为主机字节序
+    uint16_t Ntohs(uint16_t v)              // 0x00 01(网络字节序) -> 0x01 00(主机字节序）
+    {
+        return ((v & 0xff00) >> 8 | (v & 0x00ff) << 8);
+    }
+
+    // 将一个 uint32_t 从网络字节序转换为主机字节序
+    uint32_t Ntohl(uint32_t v)              // 0x00, 0x00, 0x00, 0x01(网络字节序) -> 0x01 00 00 00(主机字节序）
+    {
+        return ((v & 0xff000000) >> 24 |    // 第1个字节数据右移3个字节
+                (v & 0x00ff0000) >> 8 |     // 第2个字节数据右移1个字节
+                (v & 0x0000ff00) << 8 |     // 第3个字节数据左移1个字节
+                (v & 0x000000ff) << 24);    // 第4个字节数据左移3个字节
+    }
+};
+
+int main()
+{
+    const int len = 7;
+    static uint8_t input[len] = { 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x6D };
+    static char output[OUTPUT_BUF_LEN];
+    ParseTlv(input, len);
+    return 0;
+}

@@ -29,6 +29,7 @@ add_executable(LeetCode409 string/LeetCode409.cpp)
 #                       模拟测试
 #####################################################################
 add_executable(_Tlv exam/_Tlv.cpp)
+add_executable(Tlv exam/Tlv.cpp)
 
 
 
