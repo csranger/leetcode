@@ -15,13 +15,11 @@ typedef struct {
 
 int main()
 {
-    int a[];
-    int b[5] = { 12, 23, 22, 34, 45 };
-    cout << sizeof(a) << endl;
-    cout << sizeof(b) << endl;
-    cout << sizeof(TLV) << endl;
-    TLV *tlv;
-    cout << sizeof(tlv) << endl;
+    string str = "hello,world";
+    cout << str[0] << endl;
+
+
+    return 0;
 }
 
 

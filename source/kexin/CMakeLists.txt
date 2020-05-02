@@ -23,6 +23,7 @@ add_executable(LeetCode070 dp/LeetCode070.cpp)
 #                       哈希表与字符串
 #####################################################################
 add_executable(LeetCode409 string/LeetCode409.cpp)
+add_executable(LeetCode003 string/LeetCode003.cpp)
 
 
 #####################################################################
