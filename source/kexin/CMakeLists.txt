@@ -24,6 +24,8 @@ add_executable(LeetCode070 dp/LeetCode070.cpp)
 #####################################################################
 add_executable(LeetCode409 string/LeetCode409.cpp)
 add_executable(LeetCode003 string/LeetCode003.cpp)
+add_executable(LeetCode187 string/LeetCode187.cpp)
+add_executable(LeetCode076 string/LeetCode076.cpp)
 
 
 #####################################################################
