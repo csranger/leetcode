@@ -32,6 +32,9 @@ add_executable(LeetCode076 string/LeetCode076.cpp)
 #                        二叉树和图
 #####################################################################
 add_executable(LeetCode113 treemap/LeetCode113.cpp)
+add_executable(LeetCode236 treemap/LeetCode236.cpp)
+add_executable(LeetCode114 treemap/LeetCode114.cpp)
+add_executable(LeetCode114_2 treemap/LeetCode114_2.cpp)
 
 
 #####################################################################
