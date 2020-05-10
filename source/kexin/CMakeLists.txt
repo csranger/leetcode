@@ -39,6 +39,15 @@ add_executable(LeetCode199 treemap/LeetCode199.cpp)
 
 
 #####################################################################
+#                        二分查找和二叉查找树
+#####################################################################
+add_executable(Binaryearch bintree/BinarySearch.cpp)
+add_executable(BinTree bintree/BinTree.cpp)
+add_executable(LeetCode035 bintree/LeetCode035.cpp)
+add_executable(LeetCode034 bintree/LeetCode034.cpp)
+
+
+#####################################################################
 #                       模拟测试
 #####################################################################
 add_executable(Tlv exam/Tlv.cpp)
