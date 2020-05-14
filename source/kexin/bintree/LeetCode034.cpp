@@ -30,8 +30,41 @@ using namespace std;
 
 class Solution {
 public:
-    vector<int> searchRange(vector<int>& nums, int target) {
+    vector<int> searchRange(vector<int> &nums, int target)
+    {
+        vector<int> ret;
+        int in = 0;
+        BinarySearch(nums, target, in);
+        if (in != 1) {
+            ret.push_back(-1);
+            ret.push_back(-1);
+            return ret;
+        }
+        float target1 = target - 0.5;
+        float target2 = target + 0.5;
+        int left = BinarySearch(nums, target1, in);
+        int right = BinarySearch(nums, target2, in);
+        ret.push_back(left);
+        ret.push_back(right - 1);
+        return ret;
+    }
 
+    int BinarySearch(vector<int> &nums, float target, int &in)
+    {
+        int begin = 0;
+        int end = nums.size() - 1;
+        while (begin <= end) {
+            int mid = (begin + end) / 2;
+            if (nums[mid] < target) {
+                begin = mid + 1;
+            } else if (nums[mid] > target) {
+                end = mid - 1;
+            } else {
+                in = 1;
+                return mid;
+            }
+        }
+        return begin;
     }
 };
 

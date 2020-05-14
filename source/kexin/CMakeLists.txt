@@ -22,7 +22,6 @@ add_executable(LeetCode070 dp/LeetCode070.cpp)
 #####################################################################
 #                       哈希表与字符串
 #####################################################################
-add_executable(LeetCode409 string/LeetCode409.cpp)
 add_executable(LeetCode003 string/LeetCode003.cpp)
 add_executable(LeetCode187 string/LeetCode187.cpp)
 add_executable(LeetCode076 string/LeetCode076.cpp)
@@ -45,12 +44,14 @@ add_executable(Binaryearch bintree/BinarySearch.cpp)
 add_executable(BinTree bintree/BinTree.cpp)
 add_executable(LeetCode035 bintree/LeetCode035.cpp)
 add_executable(LeetCode034 bintree/LeetCode034.cpp)
+add_executable(LeetCode033 bintree/LeetCode033.cpp)
 
 
 #####################################################################
 #                       模拟测试
 #####################################################################
 add_executable(Tlv exam/Tlv.cpp)
+add_executable(work1227_1 exam/work1227_1.cpp)
 
 
 
