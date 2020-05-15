@@ -19,7 +19,7 @@ struct TreeNode {
     {}
 };
 
-// 二叉查找树插入结点
+// 二叉查找树插入结点：以 node 为根结点的查找树上插入 insertNode 结点，返回插入此结点后的查找树的跟结点
 TreeNode *BinTreeInsertNode(TreeNode *node, TreeNode *insertNode)
 {
     if (node == nullptr) {

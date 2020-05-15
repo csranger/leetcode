@@ -45,6 +45,8 @@ add_executable(BinTree bintree/BinTree.cpp)
 add_executable(LeetCode035 bintree/LeetCode035.cpp)
 add_executable(LeetCode034 bintree/LeetCode034.cpp)
 add_executable(LeetCode033 bintree/LeetCode033.cpp)
+add_executable(LeetCode449 bintree/LeetCode449.cpp)
+add_executable(LeetCode315 bintree/LeetCode315.cpp)
 
 
 #####################################################################
