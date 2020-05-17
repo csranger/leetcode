@@ -9,8 +9,6 @@ add_executable(LeetCode200_2 search/LeetCode200_2.cpp)
 add_executable(LeetCode127 search/LeetCode127.cpp)
 add_executable(LeetCode126 search/LeetCode126.cpp)
 add_executable(LeetCode473 search/LeetCode473.cpp)
-add_executable(LeetCode078 search/LeetCode078.cpp)
-add_executable(LeetCode079 search/LeetCode079.cpp)
 
 
 #####################################################################
@@ -25,6 +23,8 @@ add_executable(LeetCode070 dp/LeetCode070.cpp)
 add_executable(LeetCode003 string/LeetCode003.cpp)
 add_executable(LeetCode187 string/LeetCode187.cpp)
 add_executable(LeetCode076 string/LeetCode076.cpp)
+add_executable(LeetCode640 string/LeetCode640.cpp)
+
 
 
 #####################################################################
@@ -44,9 +44,14 @@ add_executable(Binaryearch bintree/BinarySearch.cpp)
 add_executable(BinTree bintree/BinTree.cpp)
 add_executable(LeetCode035 bintree/LeetCode035.cpp)
 add_executable(LeetCode034 bintree/LeetCode034.cpp)
-add_executable(LeetCode033 bintree/LeetCode033.cpp)
 add_executable(LeetCode449 bintree/LeetCode449.cpp)
 add_executable(LeetCode315 bintree/LeetCode315.cpp)
+
+
+#####################################################################
+#                        递归回溯归并
+#####################################################################
+add_executable(LeetCode078 backtrackingMerge/LeetCode078.cpp)
 
 
 #####################################################################
