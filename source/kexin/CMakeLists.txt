@@ -59,6 +59,10 @@ add_executable(LeetCode078 backtrackingMerge/LeetCode078.cpp)
 #####################################################################
 add_executable(Tlv exam/Tlv.cpp)
 add_executable(work1227_1 exam/work1227_1.cpp)
+add_executable(work1227_2 exam/work1227_2.cpp)
+add_executable(work1227_3 exam/work1227_3.cpp)
+add_executable(work0320_1_LeetCode1122 exam/work0320_1_LeetCode1122.cpp)
+add_executable(work0320_2_LeetCode604 exam/work0320_2_LeetCode604.cpp)
 
 
 
