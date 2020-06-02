@@ -30,6 +30,7 @@ add_executable(LeetCode640 string/LeetCode640.cpp)
 #####################################################################
 #                        二叉树和图
 #####################################################################
+add_executable(TreeDfs treemap/TreeDfs.cpp)
 add_executable(LeetCode113 treemap/LeetCode113.cpp)
 add_executable(LeetCode236 treemap/LeetCode236.cpp)
 add_executable(LeetCode114 treemap/LeetCode114.cpp)
@@ -63,6 +64,13 @@ add_executable(work1227_2 exam/work1227_2.cpp)
 add_executable(work1227_3 exam/work1227_3.cpp)
 add_executable(work0320_1_LeetCode1122 exam/work0320_1_LeetCode1122.cpp)
 add_executable(work0320_2_LeetCode604 exam/work0320_2_LeetCode604.cpp)
+add_executable(work0926_1 exam/work0926_1_LeetCode1086.cpp)
+add_executable(work0926_2 exam/work0926_2_LeetCode751.cpp)
+add_executable(work1220_1 exam/work1220_1.cpp)
+add_executable(work1220_2 exam/work1220_2.cpp)
+add_executable(work1220_3 exam/work1220_3.cpp)
+add_executable(expert0515_2 exam/expert0515_2_LeetCode1055.cpp)
+add_executable(expert0515_3 exam/expert0515_3_LeetCode085.cpp)
 
 
 

@@ -89,23 +89,39 @@
 2. pragma pack(1) 指定按照1字节内存对齐
 3. 大端字节序，数字移位处理，对解析时异常值的处理
 
-## 6.2 LeetCode640 求解方程
-1. 整形转字符串 to_string 字符串转整形 stoi
-2. 分类讨论
-## 6.3 LeetCode1293 网格中的最短路径
-
-## 6.4 work_1227_1 返回3个严格递增数组中共同的值
+## 6.2 work_1227_1 返回3个严格递增数组中共同的值
 1. 哈希表
-## 6.5 work_1227_2 二叉树上路径上遇到某结点值的概率
+## 6.3 work_1227_2 二叉树上路径上遇到某结点值的概率
 1. 二叉树层次遍历
-## 6.6 work_1227_3 TLV 编码
+## 6.4 work_1227_3 TLV 编码
 1. 
 
-## 6.7 LeetCode1122 数组的相对排序
+## 6.5 work0320_1_LeetCode1122 数组的相对排序
 1. 排序 也可使用map解
 
-## 6.7 LeetCode604 迭代压缩字符串
+## 6.6 work0320_2_LeetCode604 迭代压缩字符串(有技巧性)
+1. 逻辑处理复杂 需要在写几次
 
+## 6.7 work0320_3 
+1. 未做
+
+## 6.8 work0926_1 work0926_1_LeetCode1086 前五科的均分
+1. stl基础运用 map<int, vector<int>> scores; scores.insert(make_pair(items[i][0], vector<int>()));
+
+## 6.9 work0926_2 work0926_1_LeetCode751 IP 到 CIDR
+1. 理解题目 位运算 字符串
+
+## 6.10 work0926_3 work0926_1_LeetCode547 朋友圈
+
+## 6.11 LeetCode640 求解方程(song)
+1. 整形转字符串 to_string 字符串转整形 stoi
+2. 分类讨论
+## 6.12 LeetCode1293 网格中的最短路径(song)
+
+## 6.13 Expert1227_2_LeetCode1055
+1. 字符串 技巧
+2. string.find(char) string::npos
+## 6.14 Expert1227_3_LeetCode085
 
 
 # 七、动态规划
@@ -115,3 +131,6 @@
 
 # 八、位运算
 ## 8.1 LeetCode393 UTF-8 编码验证
+
+# 九、贪心算法
+1. 
