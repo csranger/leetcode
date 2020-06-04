@@ -12,6 +12,13 @@ add_executable(LeetCode473 search/LeetCode473.cpp)
 
 
 #####################################################################
+#                       贪心算法
+#####################################################################
+add_executable(PayMoney greedyAlgorithm/PayMoney.cpp)
+add_executable(LeetCode455 greedyAlgorithm/LeetCode455.cpp)
+
+
+#####################################################################
 #                       动态规划
 #####################################################################
 add_executable(LeetCode070 dp/LeetCode070.cpp)
