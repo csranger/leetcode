@@ -16,6 +16,8 @@ add_executable(LeetCode473 search/LeetCode473.cpp)
 #####################################################################
 add_executable(PayMoney greedyAlgorithm/PayMoney.cpp)
 add_executable(LeetCode455 greedyAlgorithm/LeetCode455.cpp)
+add_executable(LeetCode376 greedyAlgorithm/LeetCode376.cpp)
+add_executable(LeetCode402 greedyAlgorithm/LeetCode402.cpp)
 
 
 #####################################################################
