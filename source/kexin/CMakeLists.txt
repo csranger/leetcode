@@ -24,6 +24,9 @@ add_executable(LeetCode402 greedyAlgorithm/LeetCode402.cpp)
 #                       动态规划
 #####################################################################
 add_executable(LeetCode070 dp/LeetCode070.cpp)
+add_executable(LeetCode198 dp/LeetCode198.cpp)
+add_executable(LeetCode053 dp/LeetCode053.cpp)
+add_executable(LeetCode322 dp/LeetCode322.cpp)
 
 
 #####################################################################
