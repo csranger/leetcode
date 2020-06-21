@@ -27,6 +27,11 @@ add_executable(LeetCode070 dp/LeetCode070.cpp)
 add_executable(LeetCode198 dp/LeetCode198.cpp)
 add_executable(LeetCode053 dp/LeetCode053.cpp)
 add_executable(LeetCode322 dp/LeetCode322.cpp)
+add_executable(LeetCode322_2 dp/LeetCode322_2.cpp)
+add_executable(LeetCode120 dp/LeetCode120.cpp)
+add_executable(LeetCode120_2 dp/LeetCode120_2.cpp)
+add_executable(LeetCode300 dp/LeetCode300.cpp)
+add_executable(LeetCode064 dp/LeetCode064.cpp)
 
 
 #####################################################################

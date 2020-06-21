@@ -31,17 +31,30 @@ class Solution {
 public:
     int coinChange(vector<int> &coins, int amount)
     {
-        vector<int> dp(amount + 1, amount + 1);
-        dp[0] = 0;
-        // i 表示面值 i ，循环各个面值，找到 dp[i] 的最优解
-        for (int i = 1; i <= amount; i++) {
-            for (int j = 0; j < coins.size(); j++) {
-                if (coins[j] <= i) {
-                    dp[i] = min(dp[i - coins[j]] + 1, dp[i]);
-                }
-            }
+        if (amount == 0) return 0;
+        sort(coins.begin(), coins.end(), greater<int>());
+        int ret = amount + 1;
+        CoinChange(coins, amount, 0, 0, ret);
+        return ret > amount ? -1 : ret;
+    }
+
+private:
+    void CoinChange(vector<int> &coins, int amount, int coinIndex, int count, int &ret)
+    {
+        // 找到了，记录结果
+        if (amount == 0) {
+            ret = min(ret, count);
+            return;
         }
-        return dp[amount] > amount ? -1 : dp[amount];
+        // 所有可能遍历完
+        if (coinIndex == coins.size()) {
+            return;
+        }
+
+        // 核心
+        for (int k = amount / coins[coinIndex]; k >= 0 && k + count < ret; k--) {
+            CoinChange(coins, amount - k * coins[coinIndex], coinIndex + 1, count + k, ret);
+        }
     }
 };
 
