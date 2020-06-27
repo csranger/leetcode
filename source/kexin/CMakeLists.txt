@@ -37,7 +37,9 @@ add_executable(LeetCode064 dp/LeetCode064.cpp)
 #####################################################################
 #                       高级数据结构
 #####################################################################
+add_executable(TrieNode complexDataStruct/TrieNode.cpp)
 add_executable(TrieTree complexDataStruct/TrieTree.cpp)
+add_executable(UF complexDataStruct/UnionFind.cpp)
 
 
 #####################################################################
