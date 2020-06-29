@@ -24,7 +24,7 @@ struct TrieNode {
 
 
 // Trie 树的前序遍历
-void Preorder(TrieNode *node, int layer)
+static void Preorder(TrieNode *node, int layer)
 {
     for (int i = 0; i < TRIE_MAX_CHAR_NUM; i++) {
         if (node->child[i] != nullptr) {
@@ -63,7 +63,7 @@ public:
             if (ptr->child[pos] == nullptr) {
                 ptr->child[pos] = NewNode();
             }
-            ptr = ptr->child[i];
+            ptr = ptr->child[pos];
         }
         ptr->isEnd = true;
     }

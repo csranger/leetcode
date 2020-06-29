@@ -40,6 +40,8 @@ add_executable(LeetCode064 dp/LeetCode064.cpp)
 add_executable(TrieNode complexDataStruct/TrieNode.cpp)
 add_executable(TrieTree complexDataStruct/TrieTree.cpp)
 add_executable(UF complexDataStruct/UnionFind.cpp)
+add_executable(SegmentTree complexDataStruct/SegmentTree.cpp)
+add_executable(LeetCode307 complexDataStruct/LeetCode307.cpp)
 
 
 #####################################################################
