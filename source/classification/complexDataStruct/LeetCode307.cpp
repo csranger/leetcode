@@ -1,6 +1,9 @@
 //
 // Created by zhaohailong on 2020/6/29.
 //
+#include <vector>
+
+using namespace std;
 
 class NumArray {
 public:

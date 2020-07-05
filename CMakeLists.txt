@@ -3,5 +3,5 @@ project(kexinkaoshi)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_subdirectory(source/kexin)
+add_subdirectory(source/classification)
 add_subdirectory(test)
