@@ -9,6 +9,7 @@
     (3) 二叉查找树的中序遍历是从小到大的
  */
 
+#include <cstdio>
 // 数据结构与二叉树完全相同
 struct TreeNode {
     int val;
@@ -39,4 +40,47 @@ void Preorder(TreeNode *node, int layer)
 {
     if (node == nullptr) return;
 
+    for (int i = 0; i < layer; i++) {
+        printf("----");
+    }
+    printf("[%d]\n", node->val);
+
+    Preorder(node->left, layer + 1);
+    Preorder(node->right, layer + 1);
+
+}
+
+int main()
+{
+    /*
+           3
+         /   \
+        5     1
+       / \   / \
+      6  2  0   8
+        / \
+       7  4
+ */
+
+    TreeNode a(3);
+    TreeNode b(5);
+    TreeNode c(1);
+    TreeNode d(6);
+    TreeNode e(2);
+    TreeNode f(0);
+    TreeNode g(8);
+    TreeNode h(7);
+    TreeNode i(4);
+    a.left = &b;
+    a.right = &c;
+    b.left = &d;
+    b.right = &e;
+    c.left = &f;
+    c.right = &g;
+    e.left = &h;
+    e.right = &i;
+
+    Preorder(&a, 0);
+
+    return 0;
 }

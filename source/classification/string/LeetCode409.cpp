@@ -1,5 +1,5 @@
 //
-// Created by zhaohailong on 2020/7/5.
+// Created by zhaohailong on 2020/4/28.
 //
 
 /*
@@ -26,6 +26,11 @@
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 
+#include <string>
+#include <iostream>
+
+using namespace std;
+
 class Solution {
 public:
     int longestPalindrome(string s)
@@ -45,3 +50,19 @@ public:
         return ret;
     }
 };
+
+int main()
+{
+    //1
+    string str = "abccccdd";
+    Solution s;
+    cout << s.longestPalindrome(str) << endl;
+
+    // 2
+    string str2 = "bb";
+    cout << s.longestPalindrome(str2) << endl;
+
+    // 3
+    string str3 = "ccc";
+    cout << s.longestPalindrome(str3) << endl;
+}

@@ -1,5 +1,5 @@
 //
-// Created by zhaohailong on 2020/7/5.
+// Created by zhaohailong on 2020/5/2.
 //
 
 /*
@@ -20,9 +20,11 @@
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 
-#include <vector>
 #include <string>
+#include <vector>
+#include <algorithm>
 #include <map>
+#include <iostream>
 
 using namespace std;
 
@@ -37,11 +39,9 @@ public:
             string temp = strs[i];
             sort(temp.begin(), temp.end());
             if (strMap.find(temp) == strMap.end()) {
-                vector<string> item;
-                strMap[temp] = item;
+                strMap[temp] = vector<string>();
             }
             strMap[temp].push_back(strs[i]);
-
         }
 
         map<string, vector<string>>::iterator iter;
@@ -51,3 +51,14 @@ public:
         return ret;
     }
 };
+
+int main()
+{
+    vector<string> strs = { "eat", "tea", "tan", "ate", "nat", "bat" };
+    Solution s;
+    vector<vector<string>> ret = s.groupAnagrams(strs);
+    for (int i = 0; i < ret.size(); i++) {
+        cout << ret[i].size() << endl;
+    }
+    cout << ret[0][0] << endl;
+}

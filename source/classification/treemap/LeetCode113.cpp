@@ -48,23 +48,28 @@ public:
     vector<vector<int>> pathSum(TreeNode *root, int sum)
     {
         vector<vector<int>> ret;
-        vector<int> visit;
-        Dfs(root, visit, 0, sum, ret);
+        vector<int> path;
+        Preorder(root, path, 0, sum, ret);
+        return ret;
     }
 
 private:
-    void Dfs(TreeNode *root, vector<int> &visit, int sum, int target, vector<vector<int>> &ret)
+    void Preorder(TreeNode *root, vector<int> &path, int pathValue, int target, vector<vector<int>> &ret)
     {
-        visit.push_back(root->val);
-        sum += root->val;
-        if (root->left == nullptr && root->right == nullptr) {
-            if (sum == target) {
-                ret.push_back(visit);
-            }
+        if (root == nullptr) {
             return;
         }
 
-        if (root->left != nullptr) Dfs(root->left, visit, sum, target, ret);
-        if (root->right != nullptr) Dfs(root->right, visit, sum, target, ret);
+        path.push_back(root->val);
+        pathValue += root->val;
+        if (root->left == nullptr && root->right == nullptr && pathValue == target) {
+            ret.push_back(path);
+        }
+
+        Preorder(root->left, path, pathValue, target, ret);
+        Preorder(root->right, path, pathValue, target, ret);
+
+        path.pop_back();
+        pathValue -= root->val;
     }
 };

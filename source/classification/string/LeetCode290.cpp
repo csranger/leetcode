@@ -1,5 +1,5 @@
 //
-// Created by zhaohailong on 2020/7/5.
+// Created by zhaohailong on 2020/5/2.
 //
 
 /*
@@ -23,15 +23,18 @@
 
 输入: pattern = "abba", str = "dog dog dog dog"
 输出: false
+说明:
+你可以假设 pattern 只包含小写字母， str 包含了由单个空格分隔的小写字母。    
 
 来源：力扣（LeetCode）
 链接：https://leetcode-cn.com/problems/word-pattern
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 
-#include <vector>
 #include <string>
 #include <map>
+#include <vector>
+#include <iostream>
 
 using namespace std;
 
@@ -75,3 +78,23 @@ public:
         return ret;
     }
 };
+
+int main()
+{
+    Solution s;
+
+    string pattern = "abba";
+    string str = "dog cat cat fish";
+    vector<string> ret = s.Split(str);
+    cout << ret.size() << endl;
+    cout << ret[0] << endl;
+    cout << ret[1] << endl;
+    cout << ret[2] << endl;
+    cout << ret[3] << endl;
+    cout << s.wordPattern(pattern, str) << endl;
+
+    // 2
+    string pattern2 = "jquery";
+    string str2 = "jquery";
+    cout << s.wordPattern(pattern2, str2) << endl;
+}
