@@ -1,97 +1,33 @@
-//
-// Created by zhaohailong on 2020/6/7.
-//
-
-/*
-dp[i] = max(dp[i-1], dp[i-2] + nums[i]) (i >= 3)
-dp[root] = max(dp[root->left]+dp[root->right],dp[root->left->left]+dp[root->left->right]+dp[root->right->left]+dp[root->right->right] + root->val)
-在上次打劫完一条街道之后和一圈房屋后，小偷又发现了一个新的可行窃的地区。这个地区只有一个入口，我们称之为“根”。
-除了“根”之外，每栋房子有且只有一个“父“房子与之相连。一番侦察之后，聪明的小偷意识到“这个地方的所有房屋的排列类似于一棵二叉树”。
-如果两个直接相连的房子在同一天晚上被打劫，房屋将自动报警。
-
-计算在不触动警报的情况下，小偷一晚能够盗取的最高金额。
-
-示例 1:
-
-输入: [3,2,3,null,3,null,1]
-
-     3
-    / \
-   2   3
-    \   \
-     3   1
-
-输出: 7
-解释: 小偷一晚能够盗取的最高金额 = 3 + 3 + 1 = 7.
-示例 2:
-
-输入: [3,4,5,1,3,null,1]
-
-     3
-    / \
-   4   5
-  / \   \
- 1   3   1
-
-输出: 9
-解释: 小偷一晚能够盗取的最高金额 = 4 + 5 = 9.
-
-来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/house-robber-iii
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
- */
-
-#include <vector>
-#include <queue>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
-// Definition for a binary tree node.
-struct TreeNode {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-
-    TreeNode(int x) : val(x), left(NULL), right(NULL)
-    {}
+enum State {
+    BEGIN = 0,
+    UP = 1,
+    DOWN = 2
 };
 
 class Solution {
 public:
-    int rob(TreeNode *root)
+    int wiggleMaxLength(vector<int> &nums)
     {
-        int ret = 0;
-    }
-
-    // dp 表示以 root 为跟结点的二叉树的最优解
-    void PostOrder(TreeNode *root, vector<int> &dp)
-    {
-        if (root == nullptr) {
-            return;
+        State state = BEGIN;
+        int ret = 1;
+        switch (state) {
+            case BEGIN:
+                if (nums)
         }
-        if (root->left != nullptr) PostOrder(root->left, )
     }
 };
 
-/*
-             4
-            /
-           1
-          /
-         2
-        /
-       3
- */
 int main()
 {
-    TreeNode a = TreeNode(4);
-    TreeNode b = TreeNode(1);
-    TreeNode c = TreeNode(2);
-    TreeNode d = TreeNode(3);
-    a.left = &b;
-    b.left = &c;
-    c.left = &d;
-    Solution s;
-    cout << s.rob(&a) << endl;
+    vector<int> g = { 1, 2, 3 };
+    vector<int> s = { 1, 1 };
+    Solution solution;
+    cout << solution.findContentChildren(g, s) << endl;
+
+    return 0;
 }

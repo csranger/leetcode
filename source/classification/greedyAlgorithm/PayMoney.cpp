@@ -16,17 +16,25 @@
 
 using namespace std;
 
+int MinNumBanknote(int x)
+{
+    int RMB[] = { 200, 100, 20, 10, 5, 1 };
+    int ret = 0;
+    for (int i = 0; i < 6; i++) {
+        if (x >= RMB[i]) {
+            ret += x / RMB[i];
+            cout << "RMB " << RMB[i] << " : " << x / RMB[i] << "张" << endl;
+            x = x % RMB[i];
+        }
+    }
+    return ret;
+}
+
 int main()
 {
-    const int RMB[] = {200, 100, 20, 10, 5, 1};
-    const int NUM = 6;                // 6种面值
-    int X = 628;
-    int count = 0;
-    for (int i = 0; i < NUM; i++) {
-        int use = X / RMB[i];               // 需要面额为 RMB[i] 的 use 张
-        count += use;
-        X = X % RMB[i];                    // 将总额减去使用 RMB[i] 已组成的金额
-        cout << RMB[i] << " : " << use << endl;
-    }
-    cout << "最少使用 " << count << " 张钞票 "<< endl;
+    int x = 421;
+    int ret = MinNumBanknote(x);
+    cout << ret << endl;
+
+    return 0;
 }
