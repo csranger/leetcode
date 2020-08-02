@@ -31,21 +31,18 @@ using namespace std;
 
 class Solution {
 public:
-    bool canJump(vector<int> &nums)
-    {
-        vector<int> index(nums.size(), 0);
+    bool canJump(vector<int> &nums) {
+        vector<int> jumpMax(nums.size(), 0);
         for (int i = 0; i < nums.size(); i++) {
-            index[i] = i + nums[i];
+            jumpMax[i] = i + nums[i];
         }
-        int maxIndex = index[0];
-        for (int i = 0; i < index.size(); i++) {
-            if (i > maxIndex || maxIndex >= nums.size() - 1) {
-                break;
-            }
-            if (index[i] > maxIndex) {
-                maxIndex = index[i];
-            }
+        int maxPos = jumpMax[0];
+        int j = 1;
+        while (j < jumpMax.size() && j <= maxPos) {
+            if (maxPos >= nums.size() - 1) return true;
+            maxPos = jumpMax[j] > maxPos ? jumpMax[j] : maxPos;
+            j++;
         }
-        return maxIndex >= nums.size() - 1;
+        return maxPos >= nums.size() - 1;
     }
 };

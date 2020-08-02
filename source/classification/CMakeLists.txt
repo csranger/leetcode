@@ -2,15 +2,17 @@ project(leetcode)
 
 
 #####################################################################
-#                       搜素
+#                       贪心算法
 #####################################################################
-add_executable(LeetCode200 search/LeetCode200.cpp)
-add_executable(LeetCode200_2 search/LeetCode200_2.cpp)
-add_executable(LeetCode127 search/LeetCode127.cpp)
-add_executable(LeetCode126 search/LeetCode126.cpp)
-add_executable(LeetCode473 search/LeetCode473.cpp)
-#add_executable(LeetCode407 search/LeetCode407.cpp)
-#add_executable(LeetCode079 search/LeetCode079.cpp)
+add_executable(PayMoney greedyAlgorithm/PayMoney.cpp)
+add_executable(LeetCode455 greedyAlgorithm/LeetCode455.cpp)
+add_executable(LeetCode376 greedyAlgorithm/LeetCode376.cpp)
+add_executable(LeetCode402 greedyAlgorithm/LeetCode402.cpp)
+add_executable(LeetCode055 greedyAlgorithm/LeetCode055.cpp)
+add_executable(LeetCode045 greedyAlgorithm/LeetCode045.cpp)
+add_executable(LeetCode452 greedyAlgorithm/LeetCode452.cpp)
+add_executable(Poj2431 greedyAlgorithm/Poj2431.cpp)
+add_executable(Leetcode763 greedyAlgorithm/LeetCode763.cpp)
 
 
 #####################################################################
@@ -29,16 +31,21 @@ add_executable(LeetCode064 dp/LeetCode064.cpp)
 
 
 #####################################################################
-#                       贪心算法
+#                       搜素
 #####################################################################
-add_executable(PayMoney greedyAlgorithm/PayMoney.cpp)
-add_executable(LeetCode455 greedyAlgorithm/LeetCode455.cpp)
-add_executable(LeetCode376 greedyAlgorithm/LeetCode376.cpp)
-add_executable(LeetCode402 greedyAlgorithm/LeetCode402.cpp)
-add_executable(LeetCode055 greedyAlgorithm/LeetCode055.cpp)
-add_executable(LeetCode045 greedyAlgorithm/LeetCode045.cpp)
-add_executable(LeetCode452 greedyAlgorithm/LeetCode452.cpp)
-#add_executable(Poj2431 greedyAlgorithm/Poj2431.cpp)
+add_executable(LeetCode200 search/LeetCode200.cpp)
+add_executable(LeetCode200_2 search/LeetCode200_2.cpp)
+add_executable(LeetCode127 search/LeetCode127.cpp)
+add_executable(LeetCode126 search/LeetCode126.cpp)
+add_executable(LeetCode473 search/LeetCode473.cpp)
+#add_executable(LeetCode407 search/LeetCode407.cpp)
+#add_executable(LeetCode079 search/LeetCode079.cpp)
+
+
+#####################################################################
+#                        递归回溯归并
+#####################################################################
+add_executable(LeetCode078 backtrackingMerge/LeetCode078.cpp)
 
 
 #####################################################################
@@ -83,12 +90,6 @@ add_executable(LeetCode034 bintree/LeetCode034.cpp)
 #add_executable(LeetCode033 bintree/LeetCode033.cpp)
 add_executable(LeetCode449 bintree/LeetCode449.cpp)
 add_executable(LeetCode315 bintree/LeetCode315.cpp)
-
-
-#####################################################################
-#                        递归回溯归并
-#####################################################################
-add_executable(LeetCode078 backtrackingMerge/LeetCode078.cpp)
 
 
 #####################################################################

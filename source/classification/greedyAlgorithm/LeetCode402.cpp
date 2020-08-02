@@ -33,7 +33,7 @@ num 不会包含任何前导零。
 /*
 分析
 1432219 -> 432219   删除 index 0
-1432219 -> 132219   删除 index 1  最优解
+1432219 -> 132219   删除 index 1  最优解，因为4大于3
 1432219 -> 142219   删除 index 2
 1432219 -> 143219   删除 index 3
 1432219 -> 143219   删除 index 4
@@ -41,7 +41,7 @@ num 不会包含任何前导零。
 1432219 -> 143221   删除 index 6
 
 1. 若去掉某一位数字，为使得新数字最小，尽可能让新数字优先最高位最小
-2. 从高位到低位遍历，如果当前数字(单调栈top)大于下一位数字，则把当前数字去掉
+2. 从高位到低位遍历，如果当前数字(单调栈top)大于下一位数字，则把当前数字从栈中pop掉
  */
 
 #include <string>
@@ -52,35 +52,30 @@ using namespace std;
 
 class Solution {
 public:
-    string removeKdigits(string num, int k)
-    {
-        vector<int> increaseStack;      // 使用vector当做栈，因为可以遍历
+    string removeKdigits(string num, int k) {
+
+        vector<int> stack;
+        string ret;
         for (int i = 0; i < num.size(); i++) {
             int number = num[i] - '0';
-            while (increaseStack.size() != 0 && increaseStack[increaseStack.size() - 1] > number && k > 0) {
-                increaseStack.pop_back();
+            while (k > 0 && stack.size() > 0 && stack[stack.size() - 1] > number) {
+                stack.pop_back();
                 k--;
             }
-            if (number == 0 && increaseStack.size() == 0) { // 0在字符串前面可忽略
+            if (number == 0 && stack.size() == 0) {
                 continue;
             }
-            increaseStack.push_back(number);
+            stack.push_back(number);
         }
-
-        // 栈不空，k>0，仍然可以删数字，则从头往后删除 "12345"
-        while (increaseStack.size() != 0 && k > 0) {
-            increaseStack.pop_back();
+        while (k > 0 && stack.size() > 0) {
+            stack.pop_back();
             k--;
         }
-
-        // 将栈中元素从头遍历放入 result
-        string ret;
-        for (int i = 0; i < increaseStack.size(); i++) {
-            ret.append(1, '0' + increaseStack[i]);
-        }
-
-        if (ret == "") {
+        if (stack.size() == 0) {
             return "0";
+        }
+        for (int i = 0; i < stack.size(); i++) {
+            ret+=('0' + stack[i]);
         }
         return ret;
     }

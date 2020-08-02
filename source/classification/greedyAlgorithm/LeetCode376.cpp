@@ -37,18 +37,20 @@ using namespace std;
 
 //贪心：当序列有一段连续的递增(或递减时)，为形成摇摆序列，我们只需要保留这些连续的递增(或递减时)的首尾元素，
 //这样更可能使得尾部的后一个元素成为摇摆子序列的下一个元素。
+
+enum State {
+    BEGIN = 0,
+    UP,
+    DOWN
+};
+
 class Solution {
 public:
-    int wiggleMaxLength(vector<int> &nums)
-    {
+    int wiggleMaxLength(vector<int> &nums) {
         if (nums.size() < 2) {
             return nums.size();
         }
 
-        // 状态机
-        static const int BEGIN = 0;
-        static const int UP = 1;
-        static const int DOWN = 2;
         int state = BEGIN;
         int ret = 1;        // 摇摆序列最大长度
 
@@ -57,23 +59,23 @@ public:
             switch (state) {    // state 表示上一个元素的状态
                 case BEGIN:
                     if (nums[i] > nums[i - 1]) {
+                        ret++;
                         state = UP;
-                        ret++;
                     } else if (nums[i] < nums[i - 1]) {
-                        state = DOWN;
                         ret++;
+                        state = DOWN;
                     }
                     break;
                 case UP:
-                    if (nums[i - 1] > nums[i]) {
-                        state = DOWN;
+                    if (nums[i] < nums[i - 1]) {
                         ret++;
+                        state = DOWN;
                     }
                     break;
                 case DOWN:
-                    if (nums[i - 1] < nums[i]) {
-                        state = UP;
+                    if (nums[i] > nums[i - 1]) {
                         ret++;
+                        state = UP;
                     }
                     break;
             }
@@ -82,9 +84,8 @@ public:
     }
 };
 
-int main()
-{
-    vector<int> a = { 1, 7, 4, 9, 2, 5 };
+int main() {
+    vector<int> a = {1, 7, 4, 9, 2, 5};
     Solution s;
     cout << s.wiggleMaxLength(a) << endl;
 }
