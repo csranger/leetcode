@@ -6,45 +6,33 @@ using namespace std;
 
 class Solution {
 public:
-    static bool less(vector<int> &v1, vector<int> &v2) {
-        return v1[0] < v2[0];
-    }
+    vector<int> partitionLabels(string S) {
+        int index[26] = {0};
+        for (int i = 0; i < S.length(); i++) {
+            index[S[i] - 'a'] = i;
+        }
 
-    int findMinArrowShots(vector<vector<int>> &points) {
-        if (points.size() == 0) {
-            return 0;
-        }
-        sort(points.begin(), points.end(), less);
-        int left = points[0][0];
-        int right = points[0][1];
-        int minShots = 1;
-        for (int i = 1; i < points.size(); i++) {
-            if (right < points[i][0]) {
-                minShots++;
-                left = points[i][0];
-                right = points[i][1];
-            } else {
-                left = points[i][0];
-                right = right > points[i][1] ? points[i][1] : right;
+        int startJumpPos = 0;
+        vector<int> ret;
+        while (startJumpPos < S.length()) {
+            // 从 startJumpPos 出开始跳跃
+            int maxPos = index[S[startJumpPos] - 'a'];
+            int i = startJumpPos + 1;
+            while (i < S.length() && i <= maxPos) {
+                maxPos = max(maxPos, index[S[i] - 'a']);
+                i++;
             }
+            ret.push_back(maxPos - startJumpPos + 1);
+            startJumpPos = maxPos + 1;
         }
-        return minShots;
+        return ret;
     }
 };
 
 int main() {
-    vector<vector<int>> nums = {{3, 9},
-                                {7, 12},
-                                {3, 8},
-                                {6, 8},
-                                {9, 10},
-                                {2, 9},
-                                {0, 9},
-                                {3, 9},
-                                {0, 6},
-                                {2, 8}};
+    string str = "ababcbacadefegdehijhklij";
     Solution s;
-    cout << s.findMinArrowShots(nums) << endl;
+    s.partitionLabels(str);
 
     return 0;
 }

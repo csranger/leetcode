@@ -30,23 +30,23 @@ using namespace std;
 class Solution {
 public:
     vector<int> partitionLabels(string S) {
-        vector<int> ends(S.size(), -1);
-        for (int i = 0; i < S.size(); i++) {
-            ends[S[i] - 'a'] = i;
+        int index[26] = {0};
+        for (int i = 0; i < S.length(); i++) {
+            index[S[i] - 'a'] = i;
         }
+
+        int startJumpPos = 0;
         vector<int> ret;
-        // i 遍历每一个字符，找出一定段内最远索引位置 maxPos
-        int i = 0;
-        while (i < ends.size()) {
-            // 以下同跳跃游戏相同代码
-            int maxPos = ends[S[i] - 'a'];
-            int j = i + 1;
-            while (j < ends.size() && j <= maxPos) {
-                maxPos =max(maxPos, ends[S[j] - 'a']);
-                j++;
+        while (startJumpPos < S.length()) {
+            // 从 startJumpPos 出开始跳跃
+            int maxPos = index[S[startJumpPos] - 'a'];
+            int i = startJumpPos + 1;
+            while (i < S.length() && i <= maxPos) {
+                maxPos = max(maxPos, index[S[i] - 'a']);
+                i++;
             }
-            ret.push_back(maxPos - i + 1);
-            i = maxPos + 1;
+            ret.push_back(maxPos - startJumpPos + 1);
+            startJumpPos = maxPos + 1;
         }
         return ret;
     }
