@@ -15,6 +15,7 @@ add_executable(Poj2431 greedyAlgorithm/Poj2431.cpp)
 add_executable(Leetcode763 greedyAlgorithm/LeetCode763.cpp)
 add_executable(Leetcode1167 greedyAlgorithm/LeetCode1167.cpp)
 add_executable(Leetcode253 greedyAlgorithm/LeetCode253.cpp)
+add_executable(Leetcode1094 greedyAlgorithm/LeetCode1094.cpp)
 
 
 #####################################################################

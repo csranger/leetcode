@@ -24,38 +24,33 @@ using namespace std;
 
 class Solution {
 public:
-    int numIslands(vector<vector<char>> &grid)
-    {
-        int numsOfLands = 0;
+    int numIslands(vector<vector<char>> &grid) {
         // 初始化 visit
         vector<vector<int>> visit;
         for (int i = 0; i < grid.size(); i++) {
-            visit.push_back(vector<int>());
-            for (int j = 0; j < grid[i].size(); j++) {
-                visit[i].push_back(0);
-            }
+            visit.push_back(vector<int>(grid[i].size(), 0));
         }
+
+        int numsOfIslands = 0;
         // 遍历地图上所有点，如果当前点是陆地，且未被搜索过，调用搜索接口，完成搜索后 numsOfLands++
         for (int i = 0; i < grid.size(); i++) {
             for (int j = 0; j < grid[i].size(); j++) {
                 if (grid[i][j] == '1' && visit[i][j] == 0) {
                     Dfs(grid, visit, i, j);
-                    numsOfLands++;
+                    numsOfIslands++;
                 }
             }
         }
-
-        return numsOfLands;
+        return numsOfIslands;
     }
 
 private:
     // 以 x,y 点开始在 grid 上进行深度搜索
-    void Dfs(vector<vector<char>> &grid, vector<vector<int>> &visit, int x, int y)
-    {
+    void Dfs(vector<vector<char>> &grid, vector<vector<int>> &visit, int x, int y) {
         visit[x][y] = 1;             // 1. 标记当前位置已被搜索
 
-        static const int dx[] = { -1, 1, 0, 0 };    // 利用方向数组探索上下左右四个方向，上(x-1,y)下(x+1,y)左(x,y-1)右(x,y+1)
-        static const int dy[] = { 0, 0, -1, 1 };
+        static const int dx[] = {-1, 1, 0, 0};    // 利用方向数组探索上下左右四个方向，上(x-1,y)下(x+1,y)左(x,y-1)右(x,y+1)
+        static const int dy[] = {0, 0, -1, 1};
 
         for (int i = 0; i < 4; i++) {
             int newX = dx[i] + x;           // 2. 按照方向数组的4个方向，扩展4个新位置
@@ -72,10 +67,9 @@ private:
     }
 };
 
-int main()
-{
+int main() {
     vector<vector<char>> grid;
-    char str[10][10] = { "11000", "11000", "00100", "00011" };
+    char str[10][10] = {"11000", "11000", "00100", "00011"};
     for (int i = 0; i < 4; i++) {
         grid.push_back(vector<char>());
         for (int j = 0; j < 5; j++) {
