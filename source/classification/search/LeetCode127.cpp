@@ -52,25 +52,23 @@ using namespace std;
 
 class Solution {
 public:
-    int ladderLength(string beginWord, string endWord, vector<string> &wordList)
-    {
+    int ladderLength(string beginWord, string endWord, vector<string> &wordList) {
         map<string, vector<string>> graph;
         ConstructGraph(beginWord, wordList, graph);
         set<string> visit;
         return Bfs(graph, visit, beginWord, endWord);
     }
 
-    int Bfs(map<string, vector<string>> &graph, set<string> &visit, const string &beginWord, const string &endWord)
-    {
-        queue<pair<string, int>> qe;
-        qe.push(make_pair(beginWord, 1));
+    int Bfs(map<string, vector<string>> &graph, set<string> &visit, const string &beginWord, const string &endWord) {
+        queue<pair<string, int>> searchQueue;
+        searchQueue.push(make_pair(beginWord, 1));
         visit.insert(beginWord);
 
         // 从 beginWord 开始宽搜
-        while (!qe.empty()) {
-            string word = qe.front().first;
-            int step = qe.front().second;
-            qe.pop();
+        while (!searchQueue.empty()) {
+            string word = searchQueue.front().first;
+            int step = searchQueue.front().second;
+            searchQueue.pop();
             if (word == endWord) {
                 return step;
             }
@@ -78,7 +76,7 @@ public:
             const vector<string> &neighbors = graph[word];
             for (int i = 0; i < neighbors.size(); i++) {
                 if (visit.find(neighbors[i]) == visit.end()) {
-                    qe.push(make_pair(neighbors[i], step + 1));
+                    searchQueue.push(make_pair(neighbors[i], step + 1));
                     visit.insert(neighbors[i]);
                 }
             }
@@ -88,8 +86,7 @@ public:
 
 private:
     // 构造邻接表
-    void ConstructGraph(const string &beginWord, vector<string> &wordList, map<string, vector<string>> &graph)
-    {
+    void ConstructGraph(const string &beginWord, vector<string> &wordList, map<string, vector<string>> &graph) {
         wordList.push_back(beginWord);
         for (int i = 0; i < wordList.size(); i++) {
             graph[wordList[i]] = vector<string>();
@@ -104,8 +101,7 @@ private:
         }
     }
 
-    bool Connect(const string &str1, const string &str2)
-    {
+    bool Connect(const string &str1, const string &str2) {
         int count = 0;
         for (int i = 0; i < str1.length(); i++) {
             if (str1[i] != str2[i]) {
@@ -116,8 +112,7 @@ private:
     }
 };
 
-int main()
-{
+int main() {
     string beginWord = "hit";
     string endWord = "cog";
     vector<string> wordList = {"hot", "dog", "dot", "lot", "log", "cog"};

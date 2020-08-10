@@ -10,18 +10,13 @@ using namespace std;
 
 class Solution {
 public:
-    int numIslands(vector<vector<char>> &grid)
-    {
-        int numsOfIslands = 0;
-
+    int numIslands(vector<vector<char>> &grid) {
         vector<vector<int>> visit;
         for (int i = 0; i < grid.size(); i++) {
-            visit.push_back(vector<int>());
-            for (int j = 0; j < grid[i].size(); j++) {
-                visit[i].push_back(0);
-            }
+            visit.push_back(vector<int>(grid[i].size(), 0));
         }
 
+        int numsOfIslands = 0;
         for (int i = 0; i < grid.size(); i++) {
             for (int j = 0; j < grid[i].size(); j++) {
                 if (grid[i][j] == '1' && visit[i][j] == 0) {
@@ -33,33 +28,29 @@ public:
         return numsOfIslands;
     }
 
-private:
-    void Bfs(vector<vector<char>> &grid, vector<vector<int>> &visit, int x, int y)
-    {
-        static const int dx[] = { -1, 1, 0, 0 };  // 方向数组
-        static const int dy[] = { 0, 0, -1, 1 };
-
-        queue<pair<int, int>> qe;    // 1. 搜索队列 qe，将待搜索的位置(x,y) push进入队列，并标记此位置
-        qe.push(make_pair(x, y));
+    void Bfs(vector<vector<char>> &grid, vector<vector<int>> &visit, int x, int y) {
+        queue<pair<int, int>> searchQueue;
+        searchQueue.push(make_pair(x, y));
         visit[x][y] = 1;
 
-        // 以 x,y 点开始广度优先搜索
-        while (!qe.empty()) {
-            x = qe.front().first;
-            y = qe.front().second;   // 2. 只要队列不为空，取队列头部元素，按照方向数组的4个方向，扩展到4个新位置
+        static const int dx[] = {-1, 1, 0, 0};
+        static const int dy[] = {0, 0, -1, 1};
 
-            qe.pop();     // 弹出队列头部元素
+        while (!searchQueue.empty()) {
+            x = searchQueue.front().first;
+            y = searchQueue.front().second;
 
-            for (int i = 0; i < 4; i++) {
-                int newX = dx[i] + x;
-                int newY = dy[i] + y;
+            searchQueue.pop();
 
-                if (newX < 0 || newX >= grid.size() || newY < 0 || newY >= grid[newX].size()) {// 3. 新位置不在地图范围内则忽略
+            for (int k = 0; k < 4; k++) {
+                int newX = x + dx[k];
+                int newY = y + dy[k];
+
+                if (newX < 0 || newY < 0 || newX >= grid.size() || newY >= grid[newX].size()) {
                     continue;
                 }
-
-                if (visit[newX][newY] == 0 && grid[newX][newY] == '1') {// 4. 新的点没有被搜索过，且新位置可到达，则将此位置push进入队列
-                    qe.push(make_pair(newX, newY));
+                if (grid[newX][newY] == '1' && visit[newX][newY] == 0) {
+                    searchQueue.push(make_pair(newX, newY));
                     visit[newX][newY] = 1;
                 }
             }

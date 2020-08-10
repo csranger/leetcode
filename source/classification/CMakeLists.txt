@@ -18,6 +18,19 @@ add_executable(Leetcode253 greedyAlgorithm/LeetCode253.cpp)
 add_executable(Leetcode1094 greedyAlgorithm/LeetCode1094.cpp)
 
 
+
+#####################################################################
+#                       搜素
+#####################################################################
+add_executable(LeetCode200 search/LeetCode200.cpp)
+add_executable(LeetCode200_2 search/LeetCode200_2.cpp)
+add_executable(LeetCode127 search/LeetCode127.cpp)
+add_executable(LeetCode126 search/LeetCode126.cpp)
+add_executable(LeetCode473 search/LeetCode473.cpp)
+#add_executable(LeetCode407 search/LeetCode407.cpp)
+add_executable(LeetCode079 search/LeetCode079.cpp)
+
+
 #####################################################################
 #                       动态规划
 #####################################################################
@@ -31,18 +44,6 @@ add_executable(LeetCode120 dp/LeetCode120.cpp)
 add_executable(LeetCode120_2 dp/LeetCode120_2.cpp)
 add_executable(LeetCode300 dp/LeetCode300.cpp)
 add_executable(LeetCode064 dp/LeetCode064.cpp)
-
-
-#####################################################################
-#                       搜素
-#####################################################################
-add_executable(LeetCode200 search/LeetCode200.cpp)
-add_executable(LeetCode200_2 search/LeetCode200_2.cpp)
-add_executable(LeetCode127 search/LeetCode127.cpp)
-add_executable(LeetCode126 search/LeetCode126.cpp)
-add_executable(LeetCode473 search/LeetCode473.cpp)
-#add_executable(LeetCode407 search/LeetCode407.cpp)
-#add_executable(LeetCode079 search/LeetCode079.cpp)
 
 
 #####################################################################
