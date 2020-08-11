@@ -54,29 +54,33 @@ public:
         // 优化2：从大到小排序，默认从小到大;或 sort(nums.rbegin(), nums.rend());
         sort(nums.begin(), nums.end(), greater<int>());
 
-        int visit[4] = { 0 };  // 放入火柴杆
+        int sides[4] = { 0 };
 
-        return Dfs(nums, visit, 0, sum / 4);
+        return Backtrack(nums, sides, 0, sum / 4);
     }
 
-private:
-    bool Dfs(vector<int> &nums, int visit[], int i, int target)
+    // nums 的第 i 跟火柴放入 sides 的 4 条边上
+    bool Backtrack(vector<int> &nums, int sides[], int i, int target)
     {
+        // 最后一根火柴放完进行判断
         if (i >= nums.size()) {
-            return visit[0] == target && visit[1] == target && visit[2] == target && visit[3] == target;
+            return sides[0] == target && sides[1] == target && sides[2] == target && sides[3] == target;
         }
 
-        for (int j = 0; j < 4; j++) {   // nums[i] 放在四个bucket里的哪边？，要求bucket[j] + nums[i] <= target
-            if (visit[j] + nums[i] > target) {
+        // 每根火柴分别放在四条边的哪一边？
+        for (int j = 0; j < 4; j++) {
+            if (sides[j] + nums[i] > target) {
                 continue;
             }
-            visit[j] += nums[i];    // nums[i] 火柴放在 j 桶，可以放则在此基础上继续进行深度搜索
-            if (Dfs( nums, visit, target, i + 1)) {    // 如果深度搜索成功，则结束
+
+            sides[j] += nums[i];    // nums 的第 i 根火柴放入 sides 的第 j 条边上，接着放入第 i + 1 根火柴
+            if (Backtrack(nums, sides, i + 1, target)) {
                 return true;
             }
 
-            visit[j] -= nums[i];                       // 如果nums[i] 火柴放在 j 桶深度搜索不成功，则回溯这一步，试试放在 j+1 桶
+            sides[j] -= nums[i];    // nums 的第 i 根火柴放入 sides 的第 j 条边上，无法成功则撤回放入 j + 1 条边上
         }
+
         return false;
     }
 };

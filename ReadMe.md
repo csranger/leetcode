@@ -67,51 +67,89 @@ struct PQCmp {
 };
 ```
 
+## 1.12 LeetCode1055 形成字符串的最短路径
+1. 华为
+
 # 二、搜索(前5道经典搜索题目)(在做几次)
 ## 2.1 LeetCode200:岛屿数量：二维数组上连一起为一个岛
 1. 深搜 二维数组记录访问过的点
 2. 广搜 搜索队列searchQueue 二维数组记录访问过的点 将带搜索的位置push进入到队列 放入搜索队列意味着已经搜索过+准备搜索周围位置
 
 ## 2.2 LeetCode127:单词接龙
-1. 广搜  邻接表map<string,vector<string>>表示图  记录搜索过程步数  
+1. 广搜模版题  邻接表map<string,vector<string>>表示图 
+    - 记录搜索过程步数  
     - 搜索队列queue<pair<顶点,步数>>
     - 集合set<string>记录搜索过的结点
     - 尽量使用 const 和 & 减少时间消耗
-2. 广搜几个技巧: (1) push 进入 searchQueue 时同时要 insert 进 visit
+2. 广搜模版特点: (1) push 进入 searchQueue 时同时要 insert 进 visit
                (2) 从 searchQueue 取出要搜索结点后要从 searchQueue 里 pop 掉此结点                
                (3) 放入搜索队列可以多放点其他信息，比如 step
+3. 广搜模版
+```c++
+void Bfs(map graph, set visit, T start, T target) {
+    queue<pair<string, int>> searchQueue;
+    searchQueue.push(make_pair(beginWord, 1));
+    visit.insert(beginWord);
+
+    while (!searchQueue.empty()) {
+        string cur = searchQueue.front().first;
+        int step = searchQueue.front().second;
+        searchQueue.pop();
+
+        // 此处取出当前搜索结点进行处理
+
+        for (string &word: graph[cur]) {
+            if (visit.find(word) != visit.end()) {
+                continue;
+            }
+
+            searchQueue.push(make_pair(word, step + 1));
+            visit.insert(word);
+        }
+    }
+}
+```               
     
 ## 2.3 LeetCode126:单词接龙2(hard)
-1. 记录路径的广搜 邻接表表示图 起点到终点多条路径保存
+1. 记录所有路径的广搜
+2. 邻接表表示图 起点到终点多条路径保存
     - 搜索队列使用 vector<Qitem> 替换 queue<pair<string,int>> 从而保存所有路径
     - Qitem 保存着前驱节点位置和步数信息，比 pair<string,int> 多了一个前驱结点在队列中的位置
     - 使用map<string, int> 替换集合记录搜索过的结点:记录达到m每个位置所需最小步数，存取不同前驱到达该位置情况
     - 使用变量 front 表示搜索队列的队列头，而不需要pop掉
     
 ## 2.4 Leetcode473:火柴拼正方形
-1. 回溯深搜
+1. 回溯算法
+2. 关键是如何进行回溯
+```c++
+sides[j] += nums[i];    // nums 的第 i 根火柴放入 sides 的第 j 条边上，接着放入第 i + 1 根火柴
+if (Backtrack( nums, sides, target, i + 1)) {
+    return true;
+}
+sides[j] -= nums[i];    // nums 的第 i 根火柴放入 sides 的第 j 条边上，无法成功则撤回放入 j + 1 条边上
+```
 
 ## 2.5 LeetCode407:接雨水 II(hard)
 1. 带优先级的广度优先搜索 优先队列 未做
 
 ## 2.6 LeetCode079:单词搜索
-1. 回溯深搜
+1. 深搜 + 回溯算法
+2. 核心，从 x,y 开始深搜时先保存当前结点，如果失败在回退。board[x][y] = 0;是为了再次搜索这个位置肯定走不通，因为不等于目标word
+```C++
+char temp = board[x][y];
+board[x][y] = 0;
+...
+... 以 x,y 为起点进行深搜
+...
+board[x][y] = temp;
+return false;
+```
 
 ## 2.7 LeetCod394:字符串解码
 1. 华为
 
-## 2.8 LeetCode085:最大矩形
+## 2.9 LeetCode1293:网格中的最短路径(hard)
 1. 华为
-
-
-## 2.9 LeetCode994:腐烂的橘子
-
-
-## 2.10 LeetCode994:腐烂的橘子
-
-
-## 2.11 LeetCode994:腐烂的橘子
-
 
 # 四、复杂数据结构:trie树(字典树/前缀树)+并查集+线段树(前4道经典题目)
 ## Trie 树 (功能类似于 hash 表)
@@ -188,11 +226,14 @@ struct PQCmp {
 ## 2.9 LeetCode337 打家劫舍 III
 1. 动态规划 后序遍历 二叉树深搜
 
-## 2.10 LeetCode005 最长回文子串
+
+## 2.10 LeetCode085:最大矩形
 1. 华为
 
+## 2.11 LeetCode221 最大正方形
+1. 华为
 
-## 2.10 LeetCode221 最大正方形
+## 2.12 LeetCode005 最长回文子串
 1. 华为
 
 # 二、哈希表与字符串(前6道经典哈希表与字符串相关题目)
@@ -277,52 +318,6 @@ struct PQCmp {
 ## 5.6 LeetCode---:计算右侧小于当前元素的个数，逆序数
 1. 分治 
 2. 归并排序
-
-# 九、实战练习
-## 9.1 TLV 解码
-1. uint8_t * 字节流数据强转成结构体 TLV * memcpy_s获取数据
-2. pragma pack(1) 指定按照1字节内存对齐
-3. 大端字节序，数字移位处理，对解析时异常值的处理
-
-## 9.2 work_1227_1 返回3个严格递增数组中共同的值
-1. 哈希表
-
-## 9.3 work_1227_2 二叉树上路径上遇到某结点值的概率
-1. 二叉树层次遍历
-
-## 9.4 work_1227_3 TLV 编码
-1. 
-
-## 9.5 work0320_1_LeetCode1122 数组的相对排序
-1. 排序 也可使用map解
-
-## 9.6 work0320_2_LeetCode604 迭代压缩字符串(有技巧性)
-1. 逻辑处理复杂 需要在写几次
-
-## 9.7 work0320_3 
-1. 未做
-
-## 9.8 work0926_1 work0926_1_LeetCode1086 前五科的均分
-1. stl基础运用 map<int, vector<int>> scores; scores.insert(make_pair(items[i][0], vector<int>()));
-2. map内部实现了一个红黑树，该结构具有自动排序的功能，因此map内部的所有元素都是有序的
-3. unordered_map: unordered_map内部实现了一个哈希表，因此其元素的排列顺序是杂乱的，无序的
-
-## 9.9 work0926_2 work0926_1_LeetCode751 IP 到 CIDR
-1. 理解题目 位运算 字符串
-
-## 9.10 work0926_3 work0926_1_LeetCode547 朋友圈
-
-## 9.11 expert_LeetCode640 求解方程(song)
-1. 整形转字符串 to_string 字符串转整形 stoi
-2. 分类讨论
-
-## 9.12 expert_LeetCodeCode1293 网格中的最短路径(song)
-
-## 9.13 [expert0515_1](http://3ms.huawei.com/km/groups/3942602/blogs/details/6762735#preview_attachment_box_6762735)
-1. 很简单练习编码速度
-
-## 9.14 expert0515_2_LeetCode1055 形成字符串的最短路径
-
 
 # 十一、方法：前缀和
 ## 

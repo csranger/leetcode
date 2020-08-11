@@ -13,21 +13,23 @@ public:
 
     }
 
-    void Bfs(map<string, vector<string>> &strMap, vector<string> &visit, const string &beginWord, const string &endWord) {
+    void Bfs(map<string, vector<string>> &graph, set<string> &visit, string &beginWord, string &endWord,
+             vector<string> &path) {
+        queue<string> searchQueue;
+        searchQueue.push(beginWord);
+        visit.insert(beginWord);
 
-        queue<string> scQueue;
-        scQueue.push(beginWord);
-        visit.push_back(beginWord);
+        while (!searchQueue.empty()) {
+            string temp = searchQueue.front();
+            searchQueue.pop();
 
-        while (!scQueue.empty()) {
-            string word = scQueue.front();
-            scQueue.pop();
+            //
+            path.push_back(temp);
 
-            for (string w : strMap[word]) {
-                scQueue.push(w);
-                visit.insert(w);
+            for (auto &word : graph[temp]) {
+                searchQueue.push(word);
+                visit.insert(word);
             }
         }
-
     }
 };

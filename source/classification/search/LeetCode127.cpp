@@ -53,71 +53,58 @@ using namespace std;
 class Solution {
 public:
     int ladderLength(string beginWord, string endWord, vector<string> &wordList) {
-        map<string, vector<string>> graph;
-        ConstructGraph(beginWord, wordList, graph);
+
+        wordList.push_back(beginWord);
+        map<string, vector<string>> strMap;
+        for (int i = 0; i < wordList.size(); i++) {
+            strMap[wordList[i]] = vector<string>();
+        }
+        for (int i = 0; i < wordList.size(); i++) {
+            for (int j = i + 1; j < wordList.size(); j++) {
+                if (Connect(wordList[i], wordList[j])) {
+                    strMap[wordList[i]].push_back(wordList[j]);
+                    strMap[wordList[j]].push_back(wordList[i]);
+                }
+            }
+        }
         set<string> visit;
-        return Bfs(graph, visit, beginWord, endWord);
+        return  Bfs(strMap, visit, beginWord, endWord);
     }
 
-    int Bfs(map<string, vector<string>> &graph, set<string> &visit, const string &beginWord, const string &endWord) {
+    // set<pair<string ,int>> visit <结点，步数>
+    int Bfs(map<string, vector<string>> &strMap, set<string> &visit, string &beginWord, string &endWord) {
         queue<pair<string, int>> searchQueue;
         searchQueue.push(make_pair(beginWord, 1));
         visit.insert(beginWord);
 
-        // 从 beginWord 开始宽搜
         while (!searchQueue.empty()) {
-            string word = searchQueue.front().first;
+            string cur = searchQueue.front().first;
             int step = searchQueue.front().second;
             searchQueue.pop();
-            if (word == endWord) {
+
+            if (cur == endWord) {
                 return step;
             }
 
-            const vector<string> &neighbors = graph[word];
-            for (int i = 0; i < neighbors.size(); i++) {
-                if (visit.find(neighbors[i]) == visit.end()) {
-                    searchQueue.push(make_pair(neighbors[i], step + 1));
-                    visit.insert(neighbors[i]);
+            for (string &word: strMap[cur]) {
+                if (visit.find(word) != visit.end()) {
+                    continue;
                 }
+
+                searchQueue.push(make_pair(word, step + 1));
+                visit.insert(word);
             }
         }
         return 0;
     }
 
-private:
-    // 构造邻接表
-    void ConstructGraph(const string &beginWord, vector<string> &wordList, map<string, vector<string>> &graph) {
-        wordList.push_back(beginWord);
-        for (int i = 0; i < wordList.size(); i++) {
-            graph[wordList[i]] = vector<string>();
-        }
-        for (int i = 0; i < wordList.size(); i++) {
-            for (int j = i + 1; j < wordList.size(); j++) {
-                if (Connect(wordList[i], wordList[j])) {
-                    graph[wordList[i]].push_back(wordList[j]);
-                    graph[wordList[j]].push_back(wordList[i]);
-                }
-            }
-        }
-    }
-
     bool Connect(const string &str1, const string &str2) {
-        int count = 0;
-        for (int i = 0; i < str1.length(); i++) {
+        int num = 0;
+        for (int i = 0; i < str1.size(); i++) {
             if (str1[i] != str2[i]) {
-                count++;
+                num++;
             }
         }
-        return count == 1;
+        return num == 1;
     }
 };
-
-int main() {
-    string beginWord = "hit";
-    string endWord = "cog";
-    vector<string> wordList = {"hot", "dog", "dot", "lot", "log", "cog"};
-
-    Solution s;
-    cout << s.ladderLength(beginWord, endWord, wordList) << endl;
-    return 0;
-}
