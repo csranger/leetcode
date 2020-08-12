@@ -29,6 +29,9 @@ add_executable(LeetCode126 search/LeetCode126.cpp)
 add_executable(LeetCode473 search/LeetCode473.cpp)
 #add_executable(LeetCode407 search/LeetCode407.cpp)
 add_executable(LeetCode079 search/LeetCode079.cpp)
+add_executable(LeetCode994 search/LeetCode994.cpp)
+add_executable(LeetCode695 search/LeetCode695.cpp)
+add_executable(LeetCode695_2 search/LeetCode695_2.cpp)
 
 
 #####################################################################
@@ -50,6 +53,7 @@ add_executable(LeetCode064 dp/LeetCode064.cpp)
 #                        递归回溯归并
 #####################################################################
 add_executable(LeetCode078 backtrackingMerge/LeetCode078.cpp)
+add_executable(LeetCode394 backtrackingMerge/LeetCode394.cpp)
 
 
 #####################################################################
@@ -76,7 +80,7 @@ add_executable(LeetCode076 string/LeetCode076.cpp)
 #####################################################################
 #                        二叉树和图
 #####################################################################
-add_executable(TreeDfs treemap/TreeDfs.cpp)
+add_executable(TreeDfs treemap/TreeDfsBfs.cpp)
 add_executable(LeetCode113 treemap/LeetCode113.cpp)
 add_executable(LeetCode236 treemap/LeetCode236.cpp)
 add_executable(LeetCode114 treemap/LeetCode114.cpp)

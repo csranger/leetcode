@@ -45,31 +45,30 @@ struct TreeNode {
 
 class Solution {
 public:
-    vector<vector<int>> pathSum(TreeNode *root, int sum)
-    {
-        vector<vector<int>> ret;
-        vector<int> path;
-        Preorder(root, path, 0, sum, ret);
-        return ret;
+    vector<vector<int>> pathSum(TreeNode *root, int sum) {
+        vector<vector<int>> path;
+        vector<int> visit;
+        int s = 0;
+        Preorder(root, visit, path, s, sum);
+        return path;
     }
 
-private:
-    void Preorder(TreeNode *root, vector<int> &path, int pathValue, int target, vector<vector<int>> &ret)
-    {
-        if (root == nullptr) {
+    void Preorder(TreeNode *node, vector<int> &visit, vector<vector<int>> &path, int &sum, int &target) {
+        if (node == nullptr) {
             return;
         }
 
-        path.push_back(root->val);
-        pathValue += root->val;
-        if (root->left == nullptr && root->right == nullptr && pathValue == target) {
-            ret.push_back(path);
+        // preorder 在这里处理
+        visit.push_back(node->val);
+        sum += node->val;
+        if (node->left == nullptr && node->right == nullptr && sum == target) {
+            path.push_back(visit);
         }
 
-        Preorder(root->left, path, pathValue, target, ret);
-        Preorder(root->right, path, pathValue, target, ret);
+        Preorder(node->left, visit, path, sum, target);
+        Preorder(node->right, visit, path, sum, target);
 
-        path.pop_back();
-        pathValue -= root->val;
+        visit.pop_back();
+        sum -= node->val;
     }
 };

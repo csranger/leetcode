@@ -7,29 +7,28 @@
 
 using namespace std;
 
+
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+
+    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
+
 class Solution {
 public:
-    vector<vector<string>> findLadders(string beginWord, string endWord, vector<string> &wordList) {
-
-    }
-
-    void Bfs(map<string, vector<string>> &graph, set<string> &visit, string &beginWord, string &endWord,
-             vector<string> &path) {
-        queue<string> searchQueue;
-        searchQueue.push(beginWord);
-        visit.insert(beginWord);
-
-        while (!searchQueue.empty()) {
-            string temp = searchQueue.front();
-            searchQueue.pop();
-
-            //
-            path.push_back(temp);
-
-            for (auto &word : graph[temp]) {
-                searchQueue.push(word);
-                visit.insert(word);
-            }
+    int climbStairs(int n) {
+        vector<int> dp(n+1, 0);
+        dp[1] = 1;
+        dp[2] = 2;
+        if (n < 3) {
+            return dp[n];
         }
+
+        for (int i = 3; i < n + 1; i++) {
+            dp[i] = dp[i - 1] + dp[i - 2];
+        }
+        　return dp[n];
     }
 };

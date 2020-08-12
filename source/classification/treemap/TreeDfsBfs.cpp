@@ -18,6 +18,7 @@
 
 #include <cstdio>
 #include <iostream>
+#include <queue>
 
 using namespace std;
 
@@ -26,14 +27,12 @@ struct TreeNode {
     TreeNode *left;
     TreeNode *right;
 
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr)
-    {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
 
 };
 
 // 前序遍历
-void PreorderPrint(TreeNode *node, int layer)
-{
+void PreorderPrint(TreeNode *node, int layer) {
     if (node == nullptr) return;
 
     for (int i = 0; i < layer; i++) {
@@ -46,8 +45,7 @@ void PreorderPrint(TreeNode *node, int layer)
 }
 
 // 中序遍历
-void InorderPrint(TreeNode *node, int layer)
-{
+void InorderPrint(TreeNode *node, int layer) {
     if (!node) return;
 
     InorderPrint(node->left, layer + 1);
@@ -61,8 +59,7 @@ void InorderPrint(TreeNode *node, int layer)
 }
 
 // 后序遍历
-void PostorderPrint(TreeNode *node, int layer)
-{
+void PostorderPrint(TreeNode *node, int layer) {
     if (!node) return;
 
     PostorderPrint(node->left, layer + 1);
@@ -74,8 +71,29 @@ void PostorderPrint(TreeNode *node, int layer)
     printf("[%d]\n", node->val);
 }
 
-int main()
-{
+// 层序遍历，此时 layer 相当于搜索里的 step
+void LevelorderPrint(TreeNode *node, int layer) {
+    queue<TreeNode *> searchQueue;
+    searchQueue.push(node);
+
+    while (!searchQueue.empty()) {
+        TreeNode *temp = searchQueue.front();
+
+        searchQueue.pop();
+
+        // 取出队列的结点进行处理
+        for (int i = 0; i < layer; i++) {
+            printf("-----");
+        }
+        printf("[%d]\n", temp->val);
+        layer++;
+
+        if (temp->left != nullptr) searchQueue.push(temp->left);
+        if (temp->right != nullptr) searchQueue.push(temp->right);
+    }
+}
+
+int main() {
     TreeNode a(1);
     TreeNode b(2);
     TreeNode c(5);
@@ -89,6 +107,9 @@ int main()
     c.right = &f;
     cout << "前序遍历:" << endl;
     PreorderPrint(&a, 0);
+
+    cout << "层次遍历:" << endl;
+    LevelorderPrint(&a, 0);
 
     return 0;
 }
