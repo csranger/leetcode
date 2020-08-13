@@ -18,17 +18,20 @@ struct TreeNode {
 
 class Solution {
 public:
-    int climbStairs(int n) {
-        vector<int> dp(n+1, 0);
-        dp[1] = 1;
-        dp[2] = 2;
-        if (n < 3) {
-            return dp[n];
+    int rob(TreeNode *root) {
+        return max(Postorder(root).first, Postorder(root).second);
+    }
+
+    // 含有当前根结点的最大值，不含当前跟结点的最大值
+    pair<int, int> Postorder(TreeNode *node) {
+        if (node == nullptr) {
+            return {0, 0};
         }
 
-        for (int i = 3; i < n + 1; i++) {
-            dp[i] = dp[i - 1] + dp[i - 2];
-        }
-        　return dp[n];
+        pair<int, int> left = Postorder(node->left);
+        pair<int, int> right = Postorder(node->right);
+
+        return {node->val + left.second + right.second,
+                max(left.first, left.second) + max(right.first, right.second)};
     }
 };

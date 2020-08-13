@@ -201,7 +201,7 @@ void Preorder(TreeNode *node, vector<TreeNode *> &visit, vector<TreeNode *> &pat
 
 # 四、动态规划(前8道)
 ## 4.1 LeetCode070 爬楼梯
-1. 动态规划 dp[i]表示爬到第i阶多少种不同的方法
+1. 动态规划 dp[i]表示爬到第i阶多少种不同的方法，用vector<int>类型表示
 2. dp[i]=dp[i−1]+dp[i−2]
 
 ## 4.2 LeetCode337 打家劫舍
@@ -244,9 +244,13 @@ void Preorder(TreeNode *node, vector<TreeNode *> &visit, vector<TreeNode *> &pat
 2. dp[i][j] = max(1, min(dp[i+1][j], dp[i][j+1]) - nums[i][j])
 
 ## 4.9 LeetCode337 打家劫舍 III
-1. 动态规划 后序遍历 二叉树深搜
-
-
+1. 动态规划 + 后序遍历
+2. 核心思路
+```C++
+ // pair<int, int> 第 1 个元素表示： 打劫 root 时能够盗取的最高金额
+ // pair<int, int> 第 2 个元素表示： 不打劫 root 时能够盗取的最高金额    max(左儿子情况1, 左儿子情况2) + max(右儿子情况1, 右儿子情况2)。
+```
+   
 ## 4.10 LeetCode085:最大矩形
 1. 华为
 
