@@ -204,16 +204,16 @@ void Preorder(TreeNode *node, vector<TreeNode *> &visit, vector<TreeNode *> &pat
 1. 动态规划 dp[i]表示爬到第i阶多少种不同的方法，用vector<int>类型表示
 2. dp[i]=dp[i−1]+dp[i−2]
 
-## 4.2 LeetCode337 打家劫舍
-1. 动态规划
+## 4.2 LeetCode198 打家劫舍
+1. 动态规划 dp[i]表示偷窃前i个房间能够偷窃到的最高金额，用vector<int>类型表示
 2. dp[i] = max(nums[i]+dp[i-2], dp[i-1])
 
 ## 4.3 LeetCode053 最大子序和
 1. 动态规划 dp[i] 表示以 nums[i] 结尾的最大子序和
-2. dp[i] = max(nums[i-1]+nums[i], nums[i])
+2. dp[i] = max(dp[i-1]+nums[i], nums[i])
 3. 经典
 
-## 4.4 LeetCode322 零钱兑换：凑成总金额所需的最少的硬币个数
+## 4.4 LeetCode322 零钱兑换：凑成总金额所需的最少的硬币个数 (经典在做几次)
 1. 方法1：背包，动态规划 dp[i] 表示金额 i 的最少使用钞票的张数 
     - dp[i] = min(dp[i-c1], dp[i-c2], ..., dp[i-cn]) + 1 = min(dp[i-c1] + 1, dp[i-c2] + 1, ..., dp[i-cn] + 1)
     - c1, c2 ... cn 表示第 n 枚硬币的面值

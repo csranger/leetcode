@@ -8,30 +8,25 @@
 using namespace std;
 
 
-struct TreeNode {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-
-    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
-};
-
 class Solution {
 public:
-    int rob(TreeNode *root) {
-        return max(Postorder(root).first, Postorder(root).second);
-    }
-
-    // 含有当前根结点的最大值，不含当前跟结点的最大值
-    pair<int, int> Postorder(TreeNode *node) {
-        if (node == nullptr) {
-            return {0, 0};
+    int maxSubArray(vector<int>& nums) {
+        vector<int> dp(nums.size() + 2, 0);
+        dp[0] = nums[0];
+        if (nums.empty()) {
+            return 0;
+        }
+        if (nums.size() < 2) {
+            return nums[0];
+        }
+        for (int i = 1; i, nums.size(); i++) {
+            dp[i] = max(dp[i - 1] + nums[i], nums[i]);
         }
 
-        pair<int, int> left = Postorder(node->left);
-        pair<int, int> right = Postorder(node->right);
-
-        return {node->val + left.second + right.second,
-                max(left.first, left.second) + max(right.first, right.second)};
+        int maxSubArray = dp[0];
+        for (int i = 1; i < nums.size(); i++) {
+            maxSubArray = max(maxSubArray, dp[i]);
+        }
+        return maxSubArray;
     }
 };
