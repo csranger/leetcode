@@ -29,82 +29,53 @@ struct TreeNode2 {
     int val;
     TreeNode2 *left;
     TreeNode2 *right;
-    int leftCount;
+    int leftCnt;    // 小于当前结点值 val 的结点数量
 
-    TreeNode2(int x) : val(x), left(nullptr), right(nullptr), leftCount(0)
-    {}
+    TreeNode2(int v) : val(v), left(nullptr), right(nullptr), leftCnt(0) {}
 };
 
 class Solution {
 public:
-    vector<int> countSmaller(vector<int> &nums)
-    {
-        vector<int> ret;
-        if (nums.size() < 1) {
-            return ret;
+    vector<int> countSmaller(vector<int> &nums) {
+        vector<TreeNode2 *> vec;
+        // 从后向前构造二叉查找树
+        for (int i = nums.size() - 1; i >= 0; i--) {
+            vec.emplace_back(new TreeNode2(nums[i]));
         }
-        vector<TreeNode2 *> nodeVec;
-        for (int i = nums.size() - 1; i >= 0; i--){
-            nodeVec.push_back(new TreeNode2(nums[i]));
-        }
+        TreeNode2 *root = nullptr;
         int countSmall = 0;
-        ret.push_back(countSmall);
-        for (int i = 1; i < nodeVec.size(); i++) {
+        vector<int> ret;
+        for (auto &it: vec) {
             countSmall = 0;
-            InsertNode(nodeVec[0], nodeVec[i], countSmall);
+            root = InsertNode(root, it, countSmall);
             ret.push_back(countSmall);
         }
-        vector<int> reverseRet;
-        ReverseArray(ret, reverseRet);
-        // delete new:that's why use nodeVec
-        for (int i = 0; i < nodeVec.size(); i++) {
-            delete nodeVec[i];
-            nodeVec[i] = nullptr;
+
+        reverse(ret.begin(), ret.end());
+
+        // free
+        for (auto &it : vec) {
+            delete it;
+            it = nullptr;
         }
-        return reverseRet;
+
+        return ret;
+
     }
 
-    // 向 node 二叉查找树里插入结点 insertnode，并更新左子树数量，同时获取当前结点小于插入结点的数量
-    TreeNode2 *InsertNode(TreeNode2 *node, TreeNode2 *insertnode, int &countSmall)
-    {
+    // 向 node 为跟结点的二叉树插入 insertNode 结点，返回插入后的二叉树跟结点
+    // countSmall 表示比 insertNode 值小的个数
+    static TreeNode2 *InsertNode(TreeNode2 *node, TreeNode2 *insertNode, int &countSmall) {
         if (node == nullptr) {
-            return insertnode;
+            return insertNode;
         }
-        if (insertnode->val > node->val) {
-            countSmall += node->leftCount + 1;
-            node->right = InsertNode(node->right, insertnode, countSmall);
-        } else if (insertnode->val <= insertnode->val) {
-            node->leftCount++;
-            node->left = InsertNode(node->left, insertnode, countSmall);
+        if (node->val >= insertNode->val) {
+            node->leftCnt++;
+            node->left = InsertNode(node->left, insertNode, countSmall);
+        } else {
+            countSmall += node->leftCnt + 1;
+            node->right = InsertNode(node->right, insertNode, countSmall);
         }
         return node;
     }
-
-    // 逆序数组
-    void ReverseArray(vector<int> &nums, vector<int> &ret)
-    {
-        for (int i = nums.size() - 1; i >= 0; i--) {
-            ret.push_back(nums[i]);
-        }
-    }
 };
-
-int main()
-{
-    vector<int> a = {5, 2, 6, 1};
-    vector<int> a2;
-    Solution s;
-    s.ReverseArray(a, a2);
-    cout << a2.size() << endl;
-    cout << a2[0] << endl;
-    cout << a2[1] << endl;
-    cout << a2[2] << endl;
-    //
-    cout << "test countSmaller " << endl;
-    vector<int> ret = s.countSmaller(a);
-    cout << ret.size() << endl;
-    cout << ret[0] << endl;
-    cout << ret[1] << endl;
-    cout << ret[2] << endl;
-    cout << ret[3] << endl;
-}

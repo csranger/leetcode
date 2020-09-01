@@ -161,6 +161,10 @@ return false;
 
 ## 2.9 LeetCode1293:网格中的最短路径(hard)
 
+## 2.10 LeetCode332: 重新安排行程
+1. 给定一个 n 个点 m 条边的图，要求从指定的顶点出发，经过所有的边恰好一次（可以理解为给定起点的「一笔画」问题），使得路径的字典序最小。
+2. Hierholzer 算法用于在连通图中寻找欧拉路径
+
 # 三、二叉树与图(前5道)(二叉树、图的搜索)
 ## 预备知识
 ```c++
@@ -287,8 +291,10 @@ void Preorder(TreeNode *node, vector<TreeNode *> &visit, vector<TreeNode *> &pat
 
 
 # 六、位运算
-## 4.1 LeetCode136
-## 4.2 LeetCode137
+## 4.1 LeetCode201
+## 4.2 LeetCode421
+1. 字典树
+2. 
 ## 4.3 LeetCode260
 ## 4.4 LeetCode338
 ## 4.5 LeetCode318
@@ -317,6 +323,13 @@ void Preorder(TreeNode *node, vector<TreeNode *> &visit, vector<TreeNode *> &pat
 3. 比较做指针在窗口哈希次数大于出现在字符串t时右移
 
 # 八、二分搜索与二叉查找树(查找、分治)
+## 预备知识
+1. 二叉查找树与二叉树区别在于查找树向二叉树
+    (1) 左子树不为空，左子树上所有结点的值都小于跟结点的值
+    (2) 右子树不为空，右子树上所有结点的值都大于跟结点的值
+    (3) 二叉查找树的中序遍历是从小到大的
+2. 二叉查找树注意树的构造
+
 ## 4.1 LeetCode035:插入位置
 1. 二分查找
 
@@ -333,7 +346,7 @@ void Preorder(TreeNode *node, vector<TreeNode *> &visit, vector<TreeNode *> &pat
 4. 字符串与数字间处理
 5. 二叉查找树插入结点
 
-## 4.5 LeetCode315:计算右侧小于当前元素的个数，逆序数
+## 4.5 LeetCode315:计算右侧小于当前元素的个数
 1. 二叉查找树应用
 2. 逆序数 二叉查找树中有多少元素小于当前插入元素 二叉查找树添加新成员左子树结点数量
 

@@ -5,7 +5,6 @@ project(leetcode)
 #####################################################################
 #                       stl
 #####################################################################
-add_executable(LeetCode332 stl/LeetCode332.cpp)
 
 
 #####################################################################
@@ -39,6 +38,7 @@ add_executable(LeetCode079 search/LeetCode079.cpp)
 add_executable(LeetCode994 search/LeetCode994.cpp)
 add_executable(LeetCode695 search/LeetCode695.cpp)
 add_executable(LeetCode695_2 search/LeetCode695_2.cpp)
+add_executable(LeetCode332 search/LeetCode332.cpp)
 
 
 #####################################################################
