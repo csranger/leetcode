@@ -1,8 +1,16 @@
 [TOC]
 
-# 一、stl综合(map、unordered_map、priority_queue、queue、set、stack、pair、list)
+# 一、stl+math综合(map、unordered_map、priority_queue、queue、set、stack、pair、list)
 ## 1.1 LeetCode533 孤独像素 II
 1. 
+## 1.2 LeetCode060 第k个排列
+1. vector 删除指定索引的元素
+```c++
+vector<int> nums;
+auto it = begin(nums); // vector<int>::iterator it = begin(nums);
+nums.erase(it + index);
+```
+
 
 
 # 二、贪心算法(前7道)
@@ -208,6 +216,10 @@ void Preorder(TreeNode *node, vector<TreeNode *> &visit, vector<TreeNode *> &pat
 ## 3.6 LeetCode337:打家劫舍 III
 1. 二叉树深搜 使用到layer
 
+## 3.7 LeetCode107：二叉树的层次遍历 II
+1. 二叉树广搜 二叉树层次遍历 
+2. reverse 函数逆序容器元素 reverse(path.begin(), path.end());
+
 # 四、动态规划(前8道)
 ## 4.1 LeetCode070 爬楼梯
 1. 动态规划 dp[i]表示爬到第i阶多少种不同的方法，用vector<int>类型表示
@@ -261,13 +273,13 @@ void Preorder(TreeNode *node, vector<TreeNode *> &visit, vector<TreeNode *> &pat
 ```
    
 ## 4.10 LeetCode085:最大矩形
-1. 华为
+1. 
 
 ## 4.11 LeetCode221 最大正方形
-1. 华为
+1. 
 
 ## 4.12 LeetCode005 最长回文子串
-1. 华为
+1. 
 
 # 五、复杂数据结构:trie树(字典树/前缀树)+并查集+线段树(前4道经典题目)
 ## Trie 树 (功能类似于 hash 表)
@@ -287,7 +299,7 @@ void Preorder(TreeNode *node, vector<TreeNode *> &visit, vector<TreeNode *> &pat
 ## 4.1 LeetCode307 区域和检索 - 数组可修改
 ## 4.2 LeetCode400 字典序的第 k 个小数字
 ## 4.2 LeetCode820  单词的压缩编码
-1. 华为
+1. 
 
 
 # 六、位运算

@@ -1,11 +1,10 @@
 project(leetcode)
 
 
-
 #####################################################################
 #                       stl
 #####################################################################
-
+add_executable(LeetCode060 stl/LeetCode060.cpp)
 
 #####################################################################
 #                       贪心算法
@@ -22,7 +21,6 @@ add_executable(Leetcode763 greedyAlgorithm/LeetCode763.cpp)
 add_executable(Leetcode1167 greedyAlgorithm/LeetCode1167.cpp)
 add_executable(Leetcode253 greedyAlgorithm/LeetCode253.cpp)
 add_executable(Leetcode1094 greedyAlgorithm/LeetCode1094.cpp)
-
 
 
 #####################################################################
@@ -93,6 +91,7 @@ add_executable(LeetCode236 treemap/LeetCode236.cpp)
 add_executable(LeetCode114 treemap/LeetCode114.cpp)
 add_executable(LeetCode114_2 treemap/LeetCode114_2.cpp)
 add_executable(LeetCode199 treemap/LeetCode199.cpp)
+add_executable(LeetCode107 treemap/LeetCode107.cpp)
 
 
 #####################################################################
