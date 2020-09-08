@@ -5,6 +5,8 @@ project(leetcode)
 #                       stl
 #####################################################################
 add_executable(LeetCode060 stl/LeetCode060.cpp)
+add_executable(LeetCode347 stl/LeetCode347.cpp)
+
 
 #####################################################################
 #                       贪心算法
@@ -131,3 +133,14 @@ add_executable(work0926_2 exam/work0926_2_LeetCode751.cpp)
 # 2020.5.25 http://3ms.huawei.com/km/groups/3942602/blogs/details/6762735#preview_attachment_box_6762735
 #add_executable(expert0525_1 exam/expert0515_1.cpp)
 add_executable(expert0515_2_LeetCode1055 exam/expert0515_2_LeetCode1055.cpp)
+
+
+
+#####################################################################
+#                       回溯算法
+#####################################################################
+add_executable(LeetCode077 backtrack/LeetCode077.cpp)
+
+
+
+

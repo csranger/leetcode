@@ -3,12 +3,25 @@
 # 一、stl+math综合(map、unordered_map、priority_queue、queue、set、stack、pair、list)
 ## 1.1 LeetCode533 孤独像素 II
 1. 
+
 ## 1.2 LeetCode060 第k个排列
 1. vector 删除指定索引的元素
 ```c++
 vector<int> nums;
 auto it = begin(nums); // vector<int>::iterator it = begin(nums);
 nums.erase(it + index);
+```
+
+## 1.3 LeetCode347 前k个高频元素
+1. 优先队列实现比较器
+```c++
+using Ele = pair<int, int>;  // 元素，出现次数
+
+struct Cmp {   // 按照 Ele 第二个元素从大到小排序，最大堆/优先队列
+    bool operator()(Ele &e1, Ele &e2) {
+        return e1.second < e2.second;
+    }
+};
 ```
 
 
@@ -131,16 +144,6 @@ void Bfs(map graph, set visit, T start, T target) {
     - 使用map<string, int> 替换集合记录搜索过的结点:记录达到m每个位置所需最小步数，存取不同前驱到达该位置情况
     - 使用变量 front 表示搜索队列的队列头，而不需要pop掉
     
-## 2.4 Leetcode473:火柴拼正方形
-1. 回溯算法
-2. 关键是如何进行回溯
-```c++
-sides[j] += nums[i];    // nums 的第 i 根火柴放入 sides 的第 j 条边上，接着放入第 i + 1 根火柴
-if (Backtrack( nums, sides, target, i + 1)) {
-    return true;
-}
-sides[j] -= nums[i];    // nums 的第 i 根火柴放入 sides 的第 j 条边上，无法成功则撤回放入 j + 1 条边上
-```
 
 ## 2.5 LeetCode407:接雨水 II(hard)
 1. 带优先级的广度优先搜索 优先队列 未做
@@ -268,8 +271,9 @@ void Preorder(TreeNode *node, vector<TreeNode *> &visit, vector<TreeNode *> &pat
 1. 动态规划 + 后序遍历
 2. 核心思路
 ```C++
- // pair<int, int> 第 1 个元素表示： 打劫 root 时能够盗取的最高金额
- // pair<int, int> 第 2 个元素表示： 不打劫 root 时能够盗取的最高金额    max(左儿子情况1, 左儿子情况2) + max(右儿子情况1, 右儿子情况2)。
+pair<int, int> 
+// 第 1 个元素表示:打劫 root 时能够盗取的最高金额
+// 第 2 个元素表示:不打劫 root 时能够盗取的最高金额 max(左儿子情况1, 左儿子情况2) + max(右儿子情况1, 右儿子情况2)。
 ```
    
 ## 4.10 LeetCode085:最大矩形
@@ -398,3 +402,17 @@ abs(-4);
 # 十一、方法：栈
 ## LeetCode084 柱状图最大矩形
 ## LeetCode739 每日温度
+
+# 十二、Backtrack回溯算法
+## 12.1 Leetcode473:火柴拼正方形
+1. 回溯算法
+2. 关键是如何进行回溯
+```c++
+sides[j] += nums[i];    // nums 的第 i 根火柴放入 sides 的第 j 条边上，接着放入第 i + 1 根火柴
+if (Backtrack( nums, sides, target, i + 1)) {
+    return true;
+}
+sides[j] -= nums[i];    // nums 的第 i 根火柴放入 sides 的第 j 条边上，无法成功则撤回放入 j + 1 条边上
+```
+
+## 12.2 LeetCode077: 组合
