@@ -7,7 +7,7 @@
 
 示例:
 
-输入: n = 4, k = 2
+输入:n = 4, k = 2
 输出:
 [
   [2,4],
@@ -31,49 +31,30 @@ using namespace std;
 
 class Solution {
 public:
-    set<int> used;
-    int N;
-    vector<vector<int>> combines;
-
-    vector<vector<int>> combine(int n, int k) {
-        N = k;
-        vector<int> vec;
-        Backtrack(0, vec);
-        return combines;
+    vector<vector<int>> combine(int n, int k)
+    {
+        vector<int> combile;
+        vector<vector<int>> combiles;
+        BackTrack(combile, 1, n, k, combiles);
+        return combiles;
     }
 
-    void Backtrack(int size, vector<int> &vec) {
-        if (size == N) {
-            combines.push_back(vec);
+    void BackTrack(vector<int> &combile, int start, const int N, const int target,
+                   vector<vector<int>> &combiles)
+    {
+        if (combile.size() == target) {
+            combiles.push_back(combile);
             return;
         }
-        for (int i = 1; i <= N; i++) {
-            if (used.find(i) == used.end()) vec.emplace_back(i);
-            used.insert(i);
-            Backtrack(size + 1, vec);
-            auto it = begin(vec);
-            vec.erase(it);
-            used.erase(i);
+
+        // 关键是从 start 开始搜索，比它小的剪枝，这样就不需要使用 used数组进行记录了
+        for (int i = start; i <= N; i++) {
+            combile.push_back(i);
+            BackTrack(combile, i + 1, N, target, combiles);
+            combile.pop_back();
         }
     }
 };
-
-int main()
-{
-    int n = 4;
-    int k = 2;
-    Solution s;
-    vector<vector<int>> ret = s.combine(n, k);
-    for (int i = 0; i < ret.size(); i++) {
-        for (int j = 0; j < ret[i].size(); j++) {
-            cout << ret[i][j] << endl;
-        }
-    }
-
-
-    return 0;
-}
-
 
 
 

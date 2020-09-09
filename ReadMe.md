@@ -400,8 +400,9 @@ abs(-4);
 ## 
 
 # 十一、方法：栈
-## LeetCode084 柱状图最大矩形
 ## LeetCode739 每日温度
+
+## LeetCode084 柱状图最大矩形
 
 # 十二、Backtrack回溯算法
 ## 12.1 Leetcode473:火柴拼正方形
@@ -416,3 +417,4 @@ sides[j] -= nums[i];    // nums 的第 i 根火柴放入 sides 的第 j 条边�
 ```
 
 ## 12.2 LeetCode077: 组合
+## 12.3 LeetCode039: 组合总和

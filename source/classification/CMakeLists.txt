@@ -32,7 +32,6 @@ add_executable(LeetCode200 search/LeetCode200.cpp)
 add_executable(LeetCode200_2 search/LeetCode200_2.cpp)
 add_executable(LeetCode127 search/LeetCode127.cpp)
 add_executable(LeetCode126 search/LeetCode126.cpp)
-add_executable(LeetCode473 search/LeetCode473.cpp)
 #add_executable(LeetCode407 search/LeetCode407.cpp)
 add_executable(LeetCode079 search/LeetCode079.cpp)
 add_executable(LeetCode994 search/LeetCode994.cpp)
@@ -57,7 +56,7 @@ add_executable(LeetCode064 dp/LeetCode064.cpp)
 
 
 #####################################################################
-#                        递归回溯归并
+#                        递归归并
 #####################################################################
 add_executable(LeetCode078 backtrackingMerge/LeetCode078.cpp)
 add_executable(LeetCode394 backtrackingMerge/LeetCode394.cpp)
@@ -136,10 +135,21 @@ add_executable(expert0515_2_LeetCode1055 exam/expert0515_2_LeetCode1055.cpp)
 
 
 
+
+#####################################################################
+#                       栈
+#####################################################################
+add_executable(LeetCode739 stack/LeetCode739.cpp)
+add_executable(LeetCode084 stack/LeetCode084.cpp)
+
+
+
 #####################################################################
 #                       回溯算法
 #####################################################################
+add_executable(LeetCode473 backtrack/LeetCode473.cpp)
 add_executable(LeetCode077 backtrack/LeetCode077.cpp)
+add_executable(LeetCode039 backtrack/LeetCode039.cpp)
 
 
 
