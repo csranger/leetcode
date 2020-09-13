@@ -96,10 +96,11 @@ struct PQCmp {
 ## 2.12 LeetCode1055 形成字符串的最短路径
 1. 
 
-# 二、搜索(前5道)(二维数组、邻接表上搜索)
+# 二、搜索(前4道)(二维数组、无向图搜索)
 ## 2.1 LeetCode200:岛屿数量：二维数组上连一起为一个岛
-1. 深搜模版题 二维数组记录访问过的点
-2. 广搜模版题 搜索队列searchQueue 二维数组记录访问过的点 将带搜索的位置push进入到队列 放入搜索队列意味着已经搜索过+准备搜索周围位置
+1. 二维数组上深度优先搜索模版题 二维数组记录访问过的点
+2. 广搜模版题 搜索队列searchQueue 二维数组记录访问过的点 将带搜索的位置push进入到队列 
+放入搜索队列意味着已经搜索过+准备搜索周围位置
 
 ## 2.2 LeetCode127:单词接龙
 1. 广搜模版题  邻接表map<string,vector<string>>表示图 
@@ -149,8 +150,9 @@ void Bfs(map graph, set visit, T start, T target) {
 1. 带优先级的广度优先搜索 优先队列 未做
 
 ## 2.6 LeetCode079:单词搜索
-1. 深搜 + 回溯算法
-2. 核心，从 x,y 开始深搜时先保存当前结点，如果失败在回退。board[x][y] = 0;是为了再次搜索这个位置肯定走不通，因为不等于目标word
+1. 二维数组上深度优先搜索 + 回溯算法
+2. 核心，从 x,y 开始深搜时先保存当前结点，如果失败在回退。
+board[x][y] = 0;是为了再次搜索这个位置肯定走不通，因为不等于目标word
 ```C++
 char temp = board[x][y];
 board[x][y] = 0;
@@ -172,11 +174,8 @@ return false;
 
 ## 2.9 LeetCode1293:网格中的最短路径(hard)
 
-## 2.10 LeetCode332: 重新安排行程
-1. 给定一个 n 个点 m 条边的图，要求从指定的顶点出发，经过所有的边恰好一次（可以理解为给定起点的「一笔画」问题），使得路径的字典序最小。
-2. Hierholzer 算法用于在连通图中寻找欧拉路径
 
-# 三、二叉树与图(前5道)(二叉树、图的搜索)
+# 三、二叉树与有向图图(前5道)(二叉树、有向图的搜索)
 ## 预备知识
 ```c++
               1
@@ -203,7 +202,8 @@ void Preorder(TreeNode *node, vector<int> &visit, vector<vector<int>> &path, int
 2. 记录路径 所以 需要 回溯算法
 3. finish 变量用于找到目标路径后不再寻找。
 ```c++
-void Preorder(TreeNode *node, vector<TreeNode *> &visit, vector<TreeNode *> &path, TreeNode *target, int &finish)
+void Preorder(TreeNode *node, vector<TreeNode *> &visit, vector<TreeNode *> &path, 
+    TreeNode *target, int &finish)
 ```
 
 ## 3.3 LeetCode144:二叉树转链表(最经典前中后序)
@@ -215,6 +215,11 @@ void Preorder(TreeNode *node, vector<TreeNode *> &visit, vector<TreeNode *> &pat
 
 ## 3.5 LeetCode207:有向图判断环
 1. 未做
+
+## 2.6 LeetCode332: 重新安排行程
+1. 给定一个 n 个点 m 条边的图，要求从指定的顶点出发，经过所有的边恰好一次
+（可以理解为给定起点的「一笔画」问题），使得路径的字典序最小。
+2. Hierholzer 算法用于在连通图中寻找欧拉路径
 
 ## 3.6 LeetCode337:打家劫舍 III
 1. 二叉树深搜 使用到layer
@@ -397,12 +402,16 @@ abs(-4);
 ```
 
 # 十、方法：前缀和
-## 
+## 10.1 LeetCode974
+
+## 10.2 Leetcode560
 
 # 十一、方法：栈
 ## LeetCode739 每日温度
 
 ## LeetCode084 柱状图最大矩形
+
+## LeetCode085 最大矩形
 
 # 十二、Backtrack回溯算法
 ## 12.1 Leetcode473:火柴拼正方形
@@ -417,4 +426,13 @@ sides[j] -= nums[i];    // nums 的第 i 根火柴放入 sides 的第 j 条边�
 ```
 
 ## 12.2 LeetCode077: 组合
+
 ## 12.3 LeetCode039: 组合总和
+
+## 12.4 LeetCode040: 组合总和2
+1. 如何让同一层级(指不同路径相同顺序位的结点一致)，不出现相同的元素
+防止出现 [1,1,2,5,6,7,10] target = 8时出现两次 [1,2,5]
+    - 使用 set，这种方法耗时
+    - 第 i 次和第 i-1 次值相同，且第 i-1 次没有被选择，则第 i 次应该也不选
+
+## 12.4 LeetCode040: 组合总和3

@@ -2,10 +2,10 @@ project(leetcode)
 
 
 #####################################################################
-#                       stl
+#                       stl&math
 #####################################################################
-add_executable(LeetCode060 stl/LeetCode060.cpp)
-add_executable(LeetCode347 stl/LeetCode347.cpp)
+add_executable(LeetCode060 stl&math/LeetCode060.cpp)
+add_executable(LeetCode347 stl&math/LeetCode347.cpp)
 
 
 #####################################################################
@@ -34,10 +34,10 @@ add_executable(LeetCode127 search/LeetCode127.cpp)
 add_executable(LeetCode126 search/LeetCode126.cpp)
 #add_executable(LeetCode407 search/LeetCode407.cpp)
 add_executable(LeetCode079 search/LeetCode079.cpp)
+add_executable(LeetCode079_2 search/LeetCode079_2.cpp)
 add_executable(LeetCode994 search/LeetCode994.cpp)
 add_executable(LeetCode695 search/LeetCode695.cpp)
 add_executable(LeetCode695_2 search/LeetCode695_2.cpp)
-add_executable(LeetCode332 search/LeetCode332.cpp)
 
 
 #####################################################################
@@ -58,8 +58,8 @@ add_executable(LeetCode064 dp/LeetCode064.cpp)
 #####################################################################
 #                        递归归并
 #####################################################################
-add_executable(LeetCode078 backtrackingMerge/LeetCode078.cpp)
-add_executable(LeetCode394 backtrackingMerge/LeetCode394.cpp)
+add_executable(LeetCode078 recursion&merge/LeetCode078.cpp)
+add_executable(LeetCode394 recursion&merge/LeetCode394.cpp)
 
 
 #####################################################################
@@ -86,13 +86,15 @@ add_executable(LeetCode076 string/LeetCode076.cpp)
 #####################################################################
 #                        二叉树和图
 #####################################################################
-add_executable(TreeDfs treemap/TreeDfsBfs.cpp)
-add_executable(LeetCode113 treemap/LeetCode113.cpp)
-add_executable(LeetCode236 treemap/LeetCode236.cpp)
-add_executable(LeetCode114 treemap/LeetCode114.cpp)
-add_executable(LeetCode114_2 treemap/LeetCode114_2.cpp)
-add_executable(LeetCode199 treemap/LeetCode199.cpp)
-add_executable(LeetCode107 treemap/LeetCode107.cpp)
+add_executable(TreeDfs tree&map/TreeDfsBfs.cpp)
+add_executable(LeetCode113 tree&map/LeetCode113.cpp)
+add_executable(LeetCode236 tree&map/LeetCode236.cpp)
+add_executable(LeetCode114 tree&map/LeetCode114.cpp)
+add_executable(LeetCode114_2 tree&map/LeetCode114_2.cpp)
+add_executable(LeetCode199 tree&map/LeetCode199.cpp)
+add_executable(LeetCode332 tree&map/LeetCode332.cpp)
+add_executable(LeetCode107 tree&map/LeetCode107.cpp)
+add_executable(LeetCode637 tree&map/LeetCode637.cpp)
 
 
 #####################################################################
@@ -108,40 +110,10 @@ add_executable(LeetCode315 bintree/LeetCode315.cpp)
 
 
 #####################################################################
-#                       模拟测试
-#####################################################################
-add_executable(Tlv exam/Tlv.cpp)
-#12.27
-add_executable(work1227_1 exam/work1227_1.cpp)
-add_executable(work1227_2 exam/work1227_2.cpp)
-add_executable(work1227_3 exam/work1227_3.cpp)
-#3.20
-add_executable(work0320_1_LeetCode1122 exam/work0320_1_LeetCode1122.cpp)
-add_executable(work0320_2_LeetCode604 exam/work0320_2_LeetCode604.cpp)
-#add_executable(work0320_3 exam/work0320_3.cpp)
-#songlaoshi
-#add_executable(LeetCode640 exam/LeetCode640.cpp)
-#9.26
-add_executable(work0926_1 exam/work0926_1_LeetCode1086.cpp)
-add_executable(work0926_2 exam/work0926_2_LeetCode751.cpp)
-#add_executable(work0926_3 exam/work0926_3_LeetCode547.cpp)
-#2020.5.29
-#add_executable(work0529_1 exam/work0529_1.cpp)
-#add_executable(work0529_2 exam/work0529_2.cpp)
-#add_executable(work0529_3 exam/work0529_3.cpp)
-# 2020.5.25 http://3ms.huawei.com/km/groups/3942602/blogs/details/6762735#preview_attachment_box_6762735
-#add_executable(expert0525_1 exam/expert0515_1.cpp)
-add_executable(expert0515_2_LeetCode1055 exam/expert0515_2_LeetCode1055.cpp)
-
-
-
-
-#####################################################################
 #                       栈
 #####################################################################
 add_executable(LeetCode739 stack/LeetCode739.cpp)
 add_executable(LeetCode084 stack/LeetCode084.cpp)
-
 
 
 #####################################################################
@@ -150,7 +122,5 @@ add_executable(LeetCode084 stack/LeetCode084.cpp)
 add_executable(LeetCode473 backtrack/LeetCode473.cpp)
 add_executable(LeetCode077 backtrack/LeetCode077.cpp)
 add_executable(LeetCode039 backtrack/LeetCode039.cpp)
-
-
-
-
+add_executable(LeetCode040 backtrack/LeetCode040.cpp)
+add_executable(LeetCode216 backtrack/LeetCode216.cpp)
