@@ -38,6 +38,7 @@ add_executable(LeetCode079_2 search/LeetCode079_2.cpp)
 add_executable(LeetCode994 search/LeetCode994.cpp)
 add_executable(LeetCode695 search/LeetCode695.cpp)
 add_executable(LeetCode695_2 search/LeetCode695_2.cpp)
+add_executable(LeetCode815 search/LeetCode815.cpp)
 
 
 #####################################################################
@@ -84,7 +85,7 @@ add_executable(LeetCode076 string/LeetCode076.cpp)
 
 
 #####################################################################
-#                        二叉树和图
+#                  二叉树与有向图(二叉树、有向图的搜索)
 #####################################################################
 add_executable(TreeDfs tree&map/TreeDfsBfs.cpp)
 add_executable(LeetCode113 tree&map/LeetCode113.cpp)
@@ -95,6 +96,7 @@ add_executable(LeetCode199 tree&map/LeetCode199.cpp)
 add_executable(LeetCode332 tree&map/LeetCode332.cpp)
 add_executable(LeetCode107 tree&map/LeetCode107.cpp)
 add_executable(LeetCode637 tree&map/LeetCode637.cpp)
+add_executable(LeetCode094 tree&map/LeetCode094.cpp)
 
 
 #####################################################################
@@ -124,3 +126,9 @@ add_executable(LeetCode077 backtrack/LeetCode077.cpp)
 add_executable(LeetCode039 backtrack/LeetCode039.cpp)
 add_executable(LeetCode040 backtrack/LeetCode040.cpp)
 add_executable(LeetCode216 backtrack/LeetCode216.cpp)
+
+
+#####################################################################
+#                       滑动窗口
+#####################################################################
+add_executable(LeetCode1208 slidingWindow/LeetCode1208.cpp)
