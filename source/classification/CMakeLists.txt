@@ -61,6 +61,8 @@ add_executable(LeetCode064 dp/LeetCode064.cpp)
 #####################################################################
 add_executable(LeetCode078 recursion&merge/LeetCode078.cpp)
 add_executable(LeetCode394 recursion&merge/LeetCode394.cpp)
+add_executable(LeetCode226 recursion&merge/LeetCode226.cpp) # 递归
+
 
 
 #####################################################################
@@ -85,7 +87,7 @@ add_executable(LeetCode076 string/LeetCode076.cpp)
 
 
 #####################################################################
-#                  二叉树与有向图(二叉树、有向图的搜索)
+#                  二叉树与有向图的搜索
 #####################################################################
 add_executable(TreeDfs tree&map/TreeDfsBfs.cpp)
 add_executable(LeetCode113 tree&map/LeetCode113.cpp)
@@ -126,6 +128,7 @@ add_executable(LeetCode077 backtrack/LeetCode077.cpp)
 add_executable(LeetCode039 backtrack/LeetCode039.cpp)
 add_executable(LeetCode040 backtrack/LeetCode040.cpp)
 add_executable(LeetCode216 backtrack/LeetCode216.cpp)
+add_executable(LeetCode037 backtrack/LeetCode037.cpp)
 
 
 #####################################################################

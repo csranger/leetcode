@@ -73,13 +73,13 @@ void PostorderPrint(TreeNode *node, int layer) {
 
 // 层序遍历，此时 layer 相当于搜索里的 step
 void LevelorderPrint(TreeNode *node, int layer) {
-    queue<TreeNode *> searchQueue;
-    searchQueue.push(node);
+    queue<TreeNode *> Q;
+    Q.push(node);
 
-    while (!searchQueue.empty()) {
-        TreeNode *temp = searchQueue.front();
+    while (!Q.empty()) {
+        TreeNode *temp = Q.front();
 
-        searchQueue.pop();
+        Q.pop();
 
         // 取出队列的结点进行处理
         for (int i = 0; i < layer; i++) {
@@ -88,8 +88,8 @@ void LevelorderPrint(TreeNode *node, int layer) {
         printf("[%d]\n", temp->val);
         layer++;
 
-        if (temp->left != nullptr) searchQueue.push(temp->left);
-        if (temp->right != nullptr) searchQueue.push(temp->right);
+        if (temp->left != nullptr) Q.push(temp->left);
+        if (temp->right != nullptr) Q.push(temp->right);
     }
 }
 
