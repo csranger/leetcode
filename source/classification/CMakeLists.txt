@@ -59,9 +59,9 @@ add_executable(LeetCode064 dp/LeetCode064.cpp)
 #####################################################################
 #                        递归归并
 #####################################################################
-add_executable(LeetCode078 recursion&merge/LeetCode078.cpp)
 add_executable(LeetCode394 recursion&merge/LeetCode394.cpp)
-add_executable(LeetCode226 recursion&merge/LeetCode226.cpp) # 递归
+add_executable(LeetCode226 recursion&merge/LeetCode226.cpp) # 二叉树递归
+add_executable(LeetCode404 recursion&merge/LeetCode404.cpp) # 二叉树递归
 
 
 
@@ -129,6 +129,8 @@ add_executable(LeetCode039 backtrack/LeetCode039.cpp)
 add_executable(LeetCode040 backtrack/LeetCode040.cpp)
 add_executable(LeetCode216 backtrack/LeetCode216.cpp)
 add_executable(LeetCode037 backtrack/LeetCode037.cpp)
+add_executable(LeetCode078 backtrack/LeetCode078.cpp) # 数组所有可能的子集
+add_executable(LeetCode047 backtrack/LeetCode047.cpp) # 数组所有所有不重复的全排列
 
 
 #####################################################################
