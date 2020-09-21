@@ -116,8 +116,9 @@ add_executable(LeetCode315 bintree/LeetCode315.cpp)
 #####################################################################
 #                       栈
 #####################################################################
-add_executable(LeetCode739 stack/LeetCode739.cpp)
-add_executable(LeetCode084 stack/LeetCode084.cpp)
+add_executable(LeetCode739 stack/LeetCode739.cpp) # 单调栈
+add_executable(LeetCode084 stack/LeetCode084.cpp) # 单调栈
+add_executable(LeetCode394 stack/LeetCode394.cpp) # 辅助栈
 
 
 #####################################################################

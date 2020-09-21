@@ -33,24 +33,26 @@ using namespace std;
 
 class Solution {
 public:
+    vector<vector<int>> ans;
+    vector<int> vec;
+
     vector<vector<int>> subsets(vector<int> &nums) {
-        vector<vector<int>> ret;
-        vector<int> visit;      // 回溯时产生各个子集的数据
-        ret.push_back(visit);       // 将空集push进入ret
-        DFS(nums, visit, 0, ret);
-        return ret;
+        Backtrack(nums, 0);
+        return ans;
     }
 
-private:
-    // 以 nums[i] 元素开始进行深度搜索；visit 用于保存路径上节点，每一个节点都有是否经过的选择
-    void DFS(vector<int> &nums, vector<int> &visit, int i, vector<vector<int>> &ret) {
-        if (i >= nums.size()) {
+    void Backtrack(vector<int> &nums, int start) {
+        if (start == nums.size()) {
+            ans.push_back(vec);
             return;
         }
-        visit.push_back(nums[i]);
-        ret.push_back(visit);  // 将当前生成的子集push进入ret
-        DFS(nums, visit, i + 1, ret);     // 放入   nums[i] 元素继续递归
-        visit.pop_back();                                    // 回溯操作
-        DFS(nums, visit, i + 1, ret);     // 不放入 nums[i] 元素继续递归
+
+        // 选择当前位置
+        vec.push_back(nums[start]);
+        Backtrack(nums, start + 1);
+        // 不选择当前位置
+        vec.pop_back();
+        Backtrack(nums, start + 1);
+
     }
 };
