@@ -99,10 +99,11 @@ add_executable(LeetCode332 tree&map/LeetCode332.cpp)
 add_executable(LeetCode107 tree&map/LeetCode107.cpp)
 add_executable(LeetCode637 tree&map/LeetCode637.cpp)
 add_executable(LeetCode094 tree&map/LeetCode094.cpp)
+add_executable(LeetCode617 tree&map/LeetCode617.cpp) # 二叉树中序遍历，递归
 
 
 #####################################################################
-#                        二分查找和二叉查找树
+#                        二分查找和二叉搜索树
 #####################################################################
 add_executable(Binaryearch bintree/BinarySearch.cpp)
 add_executable(BinTree bintree/BinTree.cpp)
@@ -111,6 +112,7 @@ add_executable(LeetCode034 bintree/LeetCode034.cpp)
 #add_executable(LeetCode033 bintree/LeetCode033.cpp)
 add_executable(LeetCode449 bintree/LeetCode449.cpp)
 add_executable(LeetCode315 bintree/LeetCode315.cpp)
+add_executable(LeetCode538 bintree/LeetCode538.cpp) # 二叉搜索树的反序中序遍历
 
 
 #####################################################################
@@ -118,7 +120,7 @@ add_executable(LeetCode315 bintree/LeetCode315.cpp)
 #####################################################################
 add_executable(LeetCode739 stack/LeetCode739.cpp) # 单调栈
 add_executable(LeetCode084 stack/LeetCode084.cpp) # 单调栈
-add_executable(LeetCode394 stack/LeetCode394.cpp) # 辅助栈
+add_executable(LeetCode394_2 stack/LeetCode394_2.cpp) # 辅助栈
 
 
 #####################################################################
